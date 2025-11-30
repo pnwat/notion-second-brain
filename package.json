@@ -4,10 +4,14 @@
   "description": "ChatGPT x Notion Second Brain Integration",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "jest"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.14",
     "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
   }
 }
