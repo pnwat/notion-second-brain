@@ -81,3 +81,27 @@ NOTION_DB_ID=your_database_id
 # Windows (PowerShell)
 $env:PAYLOAD='{"action":"search","query":"Test"}'; node src/index.js
 ```
+
+## ChatGPT (Custom GPTs) との連携
+
+このリポジトリには `openapi.json` が含まれており、ChatGPT の Custom GPTs から直接このシステムを呼び出すことができます。
+
+1.  **ChatGPT** で「Explore GPTs」→「Create」を選択。
+2.  **Configure** タブの **Actions** で「Create new action」をクリック。
+3.  **Import from URL** をクリックし、以下の URL を入力して Import します。
+    `https://raw.githubusercontent.com/pnwat/notion-second-brain/main/openapi.json`
+4.  **Authentication** 設定：
+    *   Authentication Type: `API Key`
+    *   Auth Type: `Bearer`
+    *   API Key: (GitHub で発行した Personal Access Token)
+        *   ※Token は GitHub の Settings > Developer settings > Personal access tokens で `repo` と `workflow` 権限を付与して作成してください。
+
+## 開発
+
+### テストの実行
+
+Jest を使用したユニットテストが含まれています。
+
+```bash
+npm test
+```
