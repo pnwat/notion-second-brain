@@ -5,7 +5,14 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
     try {
         let targetPageId = pageId;
 
-        // If pageId is not provided but title is, search for the page by title
+        // Validate pageId format (simple UUID check)
+        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+        if (targetPageId && !uuidRegex.test(targetPageId)) {
+            console.warn(`Warning: Invalid pageId format "${targetPageId}". Ignoring and trying title search.`);
+            targetPageId = null;
+        }
+
+        // If pageId is not provided (or invalid) but title is, search for the page by title
         if (!targetPageId && title) {
             const { searchNotes } = require('./search');
             const results = await searchNotes({ query: title });
@@ -20,7 +27,7 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
         }
 
         if (!targetPageId) {
-            throw new Error('Either pageId or title must be provided for update');
+            throw new Error('Either valid pageId or title must be provided for update');
         }
 
         const properties = {};
