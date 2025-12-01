@@ -3,10 +3,31 @@ name: Sync to Notion
 on:
   workflow_dispatch:
     inputs:
-      payload:
-        description: 'JSON Payload for the action (add, update, search)'
+      action:
+        description: 'Action to perform (add, update, search)'
         required: true
-        default: '{"action": "search", "query": "Test"}'
+        default: 'search'
+      title:
+        description: 'Title of the note (for add/update)'
+        required: false
+      content:
+        description: 'Content of the note (for add/update)'
+        required: false
+      category:
+        description: 'Category of the note (for add/update)'
+        required: false
+      tags:
+        description: 'Tags (comma separated) (for add/update)'
+        required: false
+      pageId:
+        description: 'Page ID (for update)'
+        required: false
+      query:
+        description: 'Search query (for search)'
+        required: false
+      payload:
+        description: 'JSON Payload (Deprecated, use individual inputs)'
+        required: false
 
 jobs:
   sync:
@@ -27,5 +48,12 @@ jobs:
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
+          ACTION: ${{ inputs.action }}
+          TITLE: ${{ inputs.title }}
+          CONTENT: ${{ inputs.content }}
+          CATEGORY: ${{ inputs.category }}
+          TAGS: ${{ inputs.tags }}
+          PAGE_ID: ${{ inputs.pageId }}
+          QUERY: ${{ inputs.query }}
           PAYLOAD: ${{ inputs.payload }}
         run: node src/index.js

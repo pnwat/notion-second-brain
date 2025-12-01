@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.0.0"
+        "version": "1.1.0"
     },
     "servers": [
         {
@@ -15,7 +15,7 @@
             "post": {
                 "operationId": "triggerSync",
                 "summary": "Trigger the sync workflow",
-                "description": "Sends a payload to the GitHub Action to add, update, or search notes in Notion.",
+                "description": "Trigger the GitHub Action to sync notes to Notion. Requires specific parameters for adding, updating, or searching notes.",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -31,13 +31,50 @@
                                     "inputs": {
                                         "type": "object",
                                         "properties": {
-                                            "payload": {
+                                            "action": {
                                                 "type": "string",
-                                                "description": "JSON string containing action and parameters. Example: {\"action\": \"add\", \"title\": \"Note Title\", \"content\": \"Note Content\", \"category\": \"Tech\"}"
+                                                "enum": [
+                                                    "add",
+                                                    "update",
+                                                    "search"
+                                                ],
+                                                "description": "The action to perform."
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "description": "Title of the note (Required for 'add', Optional for 'update')."
+                                            },
+                                            "content": {
+                                                "type": "string",
+                                                "description": "Content of the note (Required for 'add', Optional for 'update')."
+                                            },
+                                            "category": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Tech",
+                                                    "Travel",
+                                                    "Finance",
+                                                    "Life",
+                                                    "Business",
+                                                    "Others"
+                                                ],
+                                                "description": "Category of the note (Required for 'add', Optional for 'update')."
+                                            },
+                                            "tags": {
+                                                "type": "string",
+                                                "description": "Comma-separated tags (e.g. 'Tag1,Tag2')."
+                                            },
+                                            "pageId": {
+                                                "type": "string",
+                                                "description": "Page ID of the note (Required for 'update')."
+                                            },
+                                            "query": {
+                                                "type": "string",
+                                                "description": "Search query (Required for 'search')."
                                             }
                                         },
                                         "required": [
-                                            "payload"
+                                            "action"
                                         ]
                                     }
                                 },
