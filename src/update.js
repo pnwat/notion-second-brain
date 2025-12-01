@@ -4,7 +4,7 @@ async function updateNote({ pageId, title, content, tags, category }) {
     try {
         const properties = {};
         if (title) {
-            properties.Name = {
+            properties['名前'] = {
                 title: [
                     {
                         text: {
@@ -15,14 +15,14 @@ async function updateNote({ pageId, title, content, tags, category }) {
             };
         }
         if (category) {
-            properties.Category = {
+            properties['カテゴリ'] = {
                 select: {
                     name: category,
                 },
             };
         }
         if (tags) {
-            properties.Tags = {
+            properties['タグ'] = {
                 multi_select: tags.map((tag) => ({ name: tag })),
             };
         }

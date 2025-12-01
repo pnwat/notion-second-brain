@@ -27,9 +27,9 @@ describe('addNote', () => {
         expect(notion.pages.create).toHaveBeenCalledWith({
             parent: { database_id: 'mock-db-id' },
             properties: {
-                Name: { title: [{ text: { content: 'Test Note' } }] },
-                Category: { select: { name: 'Tech' } },
-                Tags: { multi_select: [{ name: 'Tag1' }] },
+                '名前': { title: [{ text: { content: 'Test Note' } }] },
+                'カテゴリ': { select: { name: 'Tech' } },
+                'タグ': { multi_select: [{ name: 'Tag1' }] },
             },
             children: [
                 {

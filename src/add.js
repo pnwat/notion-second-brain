@@ -5,7 +5,7 @@ async function addNote({ title, content, tags = [], category = 'Others' }) {
         const response = await notion.pages.create({
             parent: { database_id: databaseId },
             properties: {
-                Name: {
+                '名前': {
                     title: [
                         {
                             text: {
@@ -14,12 +14,12 @@ async function addNote({ title, content, tags = [], category = 'Others' }) {
                         },
                     ],
                 },
-                Category: {
+                'カテゴリ': {
                     select: {
                         name: category,
                     },
                 },
-                Tags: {
+                'タグ': {
                     multi_select: tags.map((tag) => ({ name: tag })),
                 },
             },

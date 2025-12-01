@@ -18,7 +18,7 @@ describe('searchNotes', () => {
                     id: 'page-1',
                     url: 'https://notion.so/page-1',
                     properties: {
-                        Name: {
+                        '名前': {
                             title: [{ plain_text: 'Result 1' }],
                         },
                     },
@@ -33,8 +33,8 @@ describe('searchNotes', () => {
             database_id: 'mock-db-id',
             filter: {
                 or: [
-                    { property: 'Name', title: { contains: 'Search Term' } },
-                    { property: 'Tags', multi_select: { contains: 'Search Term' } },
+                    { property: '名前', title: { contains: 'Search Term' } },
+                    { property: 'タグ', multi_select: { contains: 'Search Term' } },
                 ],
             },
         });

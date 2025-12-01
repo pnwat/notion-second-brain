@@ -7,13 +7,13 @@ async function searchNotes({ query }) {
             filter: {
                 or: [
                     {
-                        property: 'Name',
+                        property: '名前',
                         title: {
                             contains: query,
                         },
                     },
                     {
-                        property: 'Tags',
+                        property: 'タグ',
                         multi_select: {
                             contains: query,
                         },
@@ -23,7 +23,7 @@ async function searchNotes({ query }) {
         });
 
         const results = response.results.map((page) => {
-            const title = page.properties.Name.title[0]?.plain_text || 'Untitled';
+            const title = page.properties['名前'].title[0]?.plain_text || 'Untitled';
             return {
                 id: page.id,
                 title: title,

@@ -36,9 +36,9 @@ describe('updateNote', () => {
         expect(notion.pages.update).toHaveBeenCalledWith({
             page_id: 'page-id-123',
             properties: {
-                Name: { title: [{ text: { content: 'Updated Title' } }] },
-                Category: { select: { name: 'Life' } },
-                Tags: { multi_select: [{ name: 'New Tag' }] },
+                '名前': { title: [{ text: { content: 'Updated Title' } }] },
+                'カテゴリ': { select: { name: 'Life' } },
+                'タグ': { multi_select: [{ name: 'New Tag' }] },
             },
         });
 
@@ -66,7 +66,7 @@ describe('updateNote', () => {
         expect(notion.pages.update).toHaveBeenCalledWith({
             page_id: 'page-id-123',
             properties: {
-                Name: { title: [{ text: { content: 'Only Title' } }] },
+                '名前': { title: [{ text: { content: 'Only Title' } }] },
             },
         });
 
