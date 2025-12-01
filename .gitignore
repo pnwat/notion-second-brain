@@ -28,3 +28,7 @@ Thumbs.db
 
 # Debug files
 debug.py
+
+# Local CLI tools (not for public repo)
+notion_cli.py
+requirements.txt
