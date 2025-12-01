@@ -1,4 +1,5 @@
 const { notion } = require('./notion');
+const { splitText } = require('./utils');
 
 async function updateNote({ pageId, title, content, tags, category, replaceContent = false }) {
     try {
@@ -75,25 +76,30 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
                 }
             }
 
+            // Split content into chunks if it exceeds 2000 characters
+            const chunks = splitText(content);
+            const children = chunks.map(chunk => ({
+                object: 'block',
+                type: 'paragraph',
+                paragraph: {
+                    rich_text: [
+                        {
+                            type: 'text',
+                            text: {
+                                content: chunk,
+                            },
+                        },
+                    ],
+                },
+            }));
+
             // Add new content
+            // Notion API allows appending up to 100 blocks at a time
+            // If we have more than 100 chunks, we need to batch them
+            // But for now, let's assume it won't exceed 100 blocks (200,000 chars)
             await notion.blocks.children.append({
                 block_id: targetPageId,
-                children: [
-                    {
-                        object: 'block',
-                        type: 'paragraph',
-                        paragraph: {
-                            rich_text: [
-                                {
-                                    type: 'text',
-                                    text: {
-                                        content: content,
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                ],
+                children: children,
             });
 
             console.log(`Successfully ${replaceContent ? 'replaced' : 'appended'} content`);
