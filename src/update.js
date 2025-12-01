@@ -84,7 +84,10 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             }
 
             // Split content into chunks if it exceeds 2000 characters
-            const chunks = splitText(content);
+            const { getTimestamp } = require('./utils');
+            const timestamp = getTimestamp();
+            const contentWithTimestamp = `\n[${timestamp}] ${content}`;
+            const chunks = splitText(contentWithTimestamp);
             const children = chunks.map(chunk => ({
                 object: 'block',
                 type: 'paragraph',

@@ -1,9 +1,11 @@
 const { notion, databaseId } = require('./notion');
-const { splitText } = require('./utils');
+const { splitText, getTimestamp } = require('./utils');
 
 async function addNote({ title, content, tags = [], category = 'Others' }) {
     try {
-        const chunks = splitText(content);
+        const timestamp = getTimestamp();
+        const contentWithTimestamp = `[${timestamp}] ${content}`;
+        const chunks = splitText(contentWithTimestamp);
         const children = chunks.map(chunk => ({
             object: 'block',
             type: 'paragraph',
