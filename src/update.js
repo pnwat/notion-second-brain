@@ -56,6 +56,14 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             };
         }
 
+        // Always update Last Updated timestamp
+        const { getTimestamp } = require('./utils');
+        properties['最終更新日時'] = {
+            date: {
+                start: getTimestamp(),
+            },
+        };
+
         // Update properties if any
         let response;
         if (Object.keys(properties).length > 0) {
@@ -84,10 +92,7 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             }
 
             // Split content into chunks if it exceeds 2000 characters
-            const { getTimestamp } = require('./utils');
-            const timestamp = getTimestamp();
-            const contentWithTimestamp = `\n[${timestamp}] ${content}`;
-            const chunks = splitText(contentWithTimestamp);
+            const chunks = splitText(content);
             const children = chunks.map(chunk => ({
                 object: 'block',
                 type: 'paragraph',

@@ -33,69 +33,24 @@ function splitText(text, maxLength = 2000) {
                 chunks.push(currentChunk);
                 currentChunk = line;
             } else {
-                /**
-                 * Splits text into chunks of a specified maximum length.
-                 * @param {string} text - The text to split.
-                 * @param {number} maxLength - The maximum length of each chunk (default: 2000).
-                 * @returns {string[]} - An array of text chunks.
-                 */
-                function splitText(text, maxLength = 2000) {
-                    if (!text) return [];
-                    if (text.length <= maxLength) return [text];
+                currentChunk = currentChunk ? currentChunk + '\n' + line : line;
+            }
+        }
+    }
 
-                    const chunks = [];
-                    let currentChunk = '';
+    if (currentChunk) {
+        chunks.push(currentChunk);
+    }
 
-                    const lines = text.split('\n');
+    return chunks;
+}
 
-                    for (const line of lines) {
-                        // If a single line is too long, split it by character
-                        if (line.length > maxLength) {
-                            if (currentChunk) {
-                                chunks.push(currentChunk);
-                                currentChunk = '';
-                            }
+/**
+ * Returns the current timestamp in ISO 8601 format (for Notion Date property).
+ * @returns {string} - ISO timestamp.
+ */
+function getTimestamp() {
+    return new Date().toISOString();
+}
 
-                            let remainingLine = line;
-                            while (remainingLine.length > 0) {
-                                chunks.push(remainingLine.slice(0, maxLength));
-                                remainingLine = remainingLine.slice(maxLength);
-                            }
-                        } else {
-                            // Check if adding the line would exceed the limit
-                            // +1 for the newline character that was removed by split
-                            if (currentChunk.length + line.length + 1 > maxLength) {
-                                chunks.push(currentChunk);
-                                currentChunk = line;
-                            } else {
-                                currentChunk = currentChunk ? currentChunk + '\n' + line : line;
-                            }
-                        }
-                    }
-
-                    if (currentChunk) {
-                        chunks.push(currentChunk);
-                    }
-
-                    return chunks;
-                }
-
-                /**
-                 * Returns the current timestamp in JST (YYYY-MM-DD HH:mm).
-                 * @returns {string} - Formatted timestamp.
-                 */
-                function getTimestamp() {
-                    const now = new Date();
-                    const options = {
-                        timeZone: 'Asia/Tokyo',
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: false,
-                    };
-                    return new Intl.DateTimeFormat('ja-JP', options).format(now).replace(/\//g, '-');
-                }
-
-                module.exports = { splitText, getTimestamp };
+module.exports = { splitText, getTimestamp };

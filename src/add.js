@@ -3,9 +3,7 @@ const { splitText, getTimestamp } = require('./utils');
 
 async function addNote({ title, content, tags = [], category = 'Others' }) {
     try {
-        const timestamp = getTimestamp();
-        const contentWithTimestamp = `[${timestamp}] ${content}`;
-        const chunks = splitText(contentWithTimestamp);
+        const chunks = splitText(content);
         const children = chunks.map(chunk => ({
             object: 'block',
             type: 'paragraph',
@@ -40,6 +38,11 @@ async function addNote({ title, content, tags = [], category = 'Others' }) {
                 },
                 'タグ': {
                     multi_select: tags.map((tag) => ({ name: tag })),
+                },
+                '最終更新日時': {
+                    date: {
+                        start: getTimestamp(),
+                    },
                 },
             },
             children: children,
