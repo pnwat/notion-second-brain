@@ -25,7 +25,7 @@
                                 "properties": {
                                     "ref": {
                                         "type": "string",
-                                        "default": "main",
+                                        "default": "master",
                                         "description": "The branch to run the workflow on."
                                     },
                                     "inputs": {
