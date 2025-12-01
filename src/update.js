@@ -56,14 +56,6 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             };
         }
 
-        // Always update Last Updated timestamp
-        const { getTimestamp } = require('./utils');
-        properties['最終更新日時'] = {
-            date: {
-                start: getTimestamp(),
-            },
-        };
-
         // Update properties if any
         let response;
         if (Object.keys(properties).length > 0) {

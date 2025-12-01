@@ -39,11 +39,6 @@ async function addNote({ title, content, tags = [], category = 'Others' }) {
                 'タグ': {
                     multi_select: tags.map((tag) => ({ name: tag })),
                 },
-                '最終更新日時': {
-                    date: {
-                        start: getTimestamp(),
-                    },
-                },
             },
             children: children,
         });
