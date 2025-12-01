@@ -1,6 +1,6 @@
 const { notion } = require('./notion');
 
-async function updateNote({ pageId, title, content, tags, category }) {
+async function updateNote({ pageId, title, content, tags, category, replaceContent = false }) {
     try {
         let targetPageId = pageId;
 
@@ -60,8 +60,22 @@ async function updateNote({ pageId, title, content, tags, category }) {
             response = await notion.pages.retrieve({ page_id: targetPageId });
         }
 
-        // Append content if provided
+        // Handle content update
         if (content) {
+            if (replaceContent) {
+                // Replace mode: delete all existing blocks first
+                console.log('Replacing content (deleting existing blocks)...');
+                const existingBlocks = await notion.blocks.children.list({
+                    block_id: targetPageId,
+                });
+
+                // Delete all existing blocks
+                for (const block of existingBlocks.results) {
+                    await notion.blocks.delete({ block_id: block.id });
+                }
+            }
+
+            // Add new content
             await notion.blocks.children.append({
                 block_id: targetPageId,
                 children: [
@@ -81,6 +95,8 @@ async function updateNote({ pageId, title, content, tags, category }) {
                     },
                 ],
             });
+
+            console.log(`Successfully ${replaceContent ? 'replaced' : 'appended'} content`);
         }
 
         console.log(`Successfully updated note: ${response.url}`);

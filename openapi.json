@@ -62,42 +62,27 @@
                                             },
                                             "tags": {
                                                 "type": "string",
-                                                "description": "Comma-separated tags (e.g. 'Tag1,Tag2')."
                                             },
-                                            "pageId": {
-                                                "type": "string",
-                                                "description": "Page ID of the note (Required for 'update')."
-                                            },
-                                            "query": {
-                                                "type": "string",
-                                                "description": "Search query (Required for 'search')."
-                                            }
-                                        },
-                                        "required": [
-                                            "action"
-                                        ]
+                                            "required": [
+                                                "ref",
+                                                "inputs"
+                                            ]
+                                        }
                                     }
+                                }
+                            },
+                            "responses": {
+                                "204": {
+                                    "description": "Workflow triggered successfully"
                                 },
-                                "required": [
-                                    "ref",
-                                    "inputs"
-                                ]
+                                "401": {
+                                    "description": "Unauthorized"
+                                },
+                                "404": {
+                                    "description": "Repository or workflow not found"
+                                }
                             }
                         }
                     }
-                },
-                "responses": {
-                    "204": {
-                        "description": "Workflow triggered successfully"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Repository or workflow not found"
-                    }
                 }
             }
-        }
-    }
-}

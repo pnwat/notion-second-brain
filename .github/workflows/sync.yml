@@ -25,6 +25,10 @@ on:
       query:
         description: 'Search query (for search)'
         required: false
+      replaceContent:
+        description: 'Replace existing content instead of appending (for update)'
+        required: false
+        default: 'false'
       payload:
         description: 'JSON Payload (Deprecated, use individual inputs)'
         required: false
@@ -55,5 +59,6 @@ jobs:
           TAGS: ${{ inputs.tags }}
           PAGE_ID: ${{ inputs.pageId }}
           QUERY: ${{ inputs.query }}
+          REPLACE_CONTENT: ${{ inputs.replaceContent }}
           PAYLOAD: ${{ inputs.payload }}
         run: node src/index.js
