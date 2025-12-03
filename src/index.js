@@ -35,10 +35,29 @@ async function main() {
     const { action, ...params } = payload;
 
     try {
-        await handleRequest(action, params);
+        const result = await handleRequest(action, params);
+
+        // Output success response as JSON
+        const response = {
+            status: 'success',
+            action: action,
+            result: result
+        };
+        console.log(JSON.stringify(response, null, 2));
+        process.exit(0);
     } catch (error) {
-        logger.error('Operation failed', { error: error.message });
-        process.exit(1);
+        // Output error response as JSON
+        const errorResponse = {
+            status: 'error',
+            action: action,
+            error: {
+                message: error.message,
+                stack: process.env.DEBUG ? error.stack : undefined
+            }
+        };
+        console.error(JSON.stringify(errorResponse, null, 2));
+        // Exit with 0 so GitHub Actions doesn't fail, but include error in response
+        process.exit(0);
     }
 }
 
