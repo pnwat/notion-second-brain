@@ -82,6 +82,14 @@
                                                 "type": "string",
                                                 "description": "JSON array of updates (for batch_update)."
                                             },
+                                            "limit": {
+                                                "type": "string",
+                                                "description": "Number of notes to return (for list_recent)."
+                                            },
+                                            "updates": {
+                                                "type": "string",
+                                                "description": "JSON array of updates (for batch_update)."
+                                            },
                                             "replaceContent": {
                                                 "type": "string",
                                                 "enum": [
