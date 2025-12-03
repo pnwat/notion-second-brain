@@ -1,4 +1,5 @@
-const { notion, databaseId } = require('./notion');
+const { notion, databaseId } = require('../notion');
+const logger = require('../utils/logger');
 
 async function searchNotes({ query }) {
     try {
@@ -31,10 +32,11 @@ async function searchNotes({ query }) {
             };
         });
 
-        console.log(JSON.stringify(results, null, 2));
+        // Log results count instead of full JSON to reduce noise
+        logger.info(`Search found ${results.length} results for query: "${query}"`);
         return results;
     } catch (error) {
-        console.error('Error searching notes:', error);
+        logger.error('Error searching notes', { error: error.message });
         throw error;
     }
 }

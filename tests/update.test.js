@@ -1,4 +1,4 @@
-const { updateNote } = require('../src/update');
+const { updateNote } = require('../src/modules/updateNote');
 const { notion } = require('../src/notion');
 
 jest.mock('../src/notion', () => ({
@@ -24,7 +24,7 @@ describe('updateNote', () => {
         notion.blocks.children.append.mockResolvedValue({});
 
         const params = {
-            pageId: 'page-id-123',
+            pageId: '12345678-1234-1234-1234-1234567890ab',
             title: 'Updated Title',
             content: 'Appended Content',
             tags: ['New Tag'],
@@ -34,7 +34,7 @@ describe('updateNote', () => {
         const url = await updateNote(params);
 
         expect(notion.pages.update).toHaveBeenCalledWith({
-            page_id: 'page-id-123',
+            page_id: '12345678-1234-1234-1234-1234567890ab',
             properties: {
                 '名前': { title: [{ text: { content: 'Updated Title' } }] },
                 'カテゴリ': { select: { name: 'Life' } },
@@ -43,7 +43,7 @@ describe('updateNote', () => {
         });
 
         expect(notion.blocks.children.append).toHaveBeenCalledWith({
-            block_id: 'page-id-123',
+            block_id: '12345678-1234-1234-1234-1234567890ab',
             children: [
                 {
                     object: 'block',
@@ -61,10 +61,10 @@ describe('updateNote', () => {
     it('should only update provided fields', async () => {
         notion.pages.update.mockResolvedValue({ url: 'https://notion.so/updated-page' });
 
-        await updateNote({ pageId: 'page-id-123', title: 'Only Title' });
+        await updateNote({ pageId: '12345678-1234-1234-1234-1234567890ab', title: 'Only Title' });
 
         expect(notion.pages.update).toHaveBeenCalledWith({
-            page_id: 'page-id-123',
+            page_id: '12345678-1234-1234-1234-1234567890ab',
             properties: {
                 '名前': { title: [{ text: { content: 'Only Title' } }] },
             },

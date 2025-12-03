@@ -1,5 +1,6 @@
-const { notion, databaseId } = require('./notion');
-const { splitText, getTimestamp } = require('./utils');
+const { notion, databaseId } = require('../notion');
+const { splitText } = require('../utils');
+const logger = require('../utils/logger');
 
 async function addNote({ title, content, tags = [], category = 'Others' }) {
     try {
@@ -42,10 +43,10 @@ async function addNote({ title, content, tags = [], category = 'Others' }) {
             },
             children: children,
         });
-        console.log(`Successfully added note: ${response.url}`);
+        logger.info(`Successfully added note: ${response.url}`, { title, id: response.id });
         return response.url;
     } catch (error) {
-        console.error('Error adding note:', error);
+        logger.error('Error adding note', { error: error.message });
         throw error;
     }
 }

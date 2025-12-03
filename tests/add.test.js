@@ -1,4 +1,4 @@
-const { addNote } = require('../src/add');
+const { addNote } = require('../src/modules/addNote');
 const { notion } = require('../src/notion');
 
 jest.mock('../src/notion', () => ({

@@ -1,5 +1,6 @@
-const { notion } = require('./notion');
-const { splitText } = require('./utils');
+const { notion } = require('../notion');
+const { splitText } = require('../utils');
+const logger = require('../utils/logger');
 
 async function updateNote({ pageId, title, content, tags, category, replaceContent = false }) {
     try {
@@ -8,13 +9,13 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
         // Validate pageId format (simple UUID check)
         const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
         if (targetPageId && !uuidRegex.test(targetPageId)) {
-            console.warn(`Warning: Invalid pageId format "${targetPageId}". Ignoring and trying title search.`);
+            logger.warn(`Invalid pageId format "${targetPageId}". Ignoring and trying title search.`);
             targetPageId = null;
         }
 
         // If pageId is not provided (or invalid) but title is, search for the page by title
         if (!targetPageId && title) {
-            const { searchNotes } = require('./search');
+            const { searchNotes } = require('./searchNotes');
             const results = await searchNotes({ query: title });
 
             if (results.length === 0) {
@@ -23,7 +24,7 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
 
             // Use the first matching result
             targetPageId = results[0].id;
-            console.log(`Found page by title "${title}": ${targetPageId}`);
+            logger.info(`Found page by title "${title}": ${targetPageId}`);
         }
 
         if (!targetPageId) {
@@ -72,7 +73,7 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
         if (content) {
             if (replaceContent) {
                 // Replace mode: delete all existing blocks first
-                console.log('Replacing content (deleting existing blocks)...');
+                logger.info('Replacing content (deleting existing blocks)...');
                 const existingBlocks = await notion.blocks.children.list({
                     block_id: targetPageId,
                 });
@@ -101,21 +102,18 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             }));
 
             // Add new content
-            // Notion API allows appending up to 100 blocks at a time
-            // If we have more than 100 chunks, we need to batch them
-            // But for now, let's assume it won't exceed 100 blocks (200,000 chars)
             await notion.blocks.children.append({
                 block_id: targetPageId,
                 children: children,
             });
 
-            console.log(`Successfully ${replaceContent ? 'replaced' : 'appended'} content`);
+            logger.info(`Successfully ${replaceContent ? 'replaced' : 'appended'} content`);
         }
 
-        console.log(`Successfully updated note: ${response.url}`);
+        logger.info(`Successfully updated note: ${response.url}`, { url: response.url });
         return response.url;
     } catch (error) {
-        console.error('Error updating note:', error);
+        logger.error('Error updating note', { error: error.message });
         throw error;
     }
 }

@@ -1,6 +1,5 @@
-const { addNote } = require('./add');
-const { updateNote } = require('./update');
-const { searchNotes } = require('./search');
+const { handleRequest } = require('./notionClient');
+const logger = require('./utils/logger');
 
 async function main() {
     let payload;
@@ -23,33 +22,20 @@ async function main() {
         try {
             payload = JSON.parse(process.env.PAYLOAD);
         } catch (error) {
-            console.error('Error: Invalid JSON in PAYLOAD.');
+            logger.error('Error: Invalid JSON in PAYLOAD.');
             process.exit(1);
         }
     } else {
-        console.error('Error: No ACTION or PAYLOAD environment variable provided.');
+        logger.error('Error: No ACTION or PAYLOAD environment variable provided.');
         process.exit(1);
     }
 
     const { action, ...params } = payload;
 
     try {
-        switch (action) {
-            case 'add':
-                await addNote(params);
-                break;
-            case 'update':
-                await updateNote(params);
-                break;
-            case 'search':
-                await searchNotes(params);
-                break;
-            default:
-                console.error(`Error: Unknown action "${action}".`);
-                process.exit(1);
-        }
+        await handleRequest(action, params);
     } catch (error) {
-        console.error('Operation failed:', error);
+        logger.error('Operation failed', { error: error.message });
         process.exit(1);
     }
 }
