@@ -2,6 +2,7 @@ const { addNote } = require('./modules/addNote');
 const { updateNote } = require('./modules/updateNote');
 const { searchNotes } = require('./modules/searchNotes');
 const { listRecent } = require('./modules/listRecent');
+const { batchUpdate } = require('./modules/batchUpdate');
 const logger = require('./utils/logger');
 
 /**
@@ -22,6 +23,8 @@ async function handleRequest(action, params) {
             return await searchNotes(params);
         case 'list_recent':
             return await listRecent(params);
+        case 'batch_update':
+            return await batchUpdate(params);
         default:
             const error = new Error(`Unknown action "${action}"`);
             logger.error(error.message);
