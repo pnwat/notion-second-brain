@@ -16,7 +16,14 @@ async function main() {
             query: process.env.QUERY,
             limit: process.env.LIMIT,
             replaceContent: process.env.REPLACE_CONTENT === 'true',
-            updates: process.env.UPDATES ? JSON.parse(process.env.UPDATES) : undefined,
+            updates: process.env.UPDATES ? (() => {
+                try {
+                    return JSON.parse(process.env.UPDATES);
+                } catch (error) {
+                    logger.error('Failed to parse UPDATES JSON', { error: error.message, updates: process.env.UPDATES });
+                    throw new Error(`Invalid UPDATES JSON: ${error.message}`);
+                }
+            })() : undefined,
         };
     }
     // 2. Fallback to PAYLOAD JSON string (for backward compatibility or local dev)
