@@ -68,12 +68,28 @@
                                             },
                                             "pageId": {
                                                 "type": "string",
+                                                "description": "Page ID of the note (for update action)."
+                                            },
+                                            "query": {
+                                                "type": "string",
+                                                "description": "Search query (for search action)."
+                                            },
+                                            "limit": {
+                                                "type": "string",
+                                                "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
+                                            },
+                                            "updates": {
+                                                "type": "string",
+                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
+                                            },
+                                            "replaceContent": {
+                                                "type": "string",
                                                 "enum": [
                                                     "true",
                                                     "false"
                                                 ],
                                                 "default": "false",
-                                                "description": "Replace content instead of appending."
+                                                "description": "Replace content instead of appending (for update action)."
                                             }
                                         },
                                         "required": [
