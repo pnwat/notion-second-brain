@@ -36,7 +36,8 @@
                                                 "enum": [
                                                     "add",
                                                     "update",
-                                                    "search"
+                                                    "search",
+                                                    "list_recent"
                                                 ],
                                                 "description": "The action to perform."
                                             },
@@ -71,6 +72,11 @@
                                             "query": {
                                                 "type": "string",
                                                 "description": "Search query (Required for 'search')."
+                                            },
+                                            "limit": {
+                                                "type": "integer",
+                                                "default": 10,
+                                                "description": "Number of notes to return (for 'list_recent')."
                                             },
                                             "replaceContent": {
                                                 "type": "string",

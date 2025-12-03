@@ -14,6 +14,7 @@ async function main() {
             tags: process.env.TAGS ? process.env.TAGS.split(',') : undefined,
             pageId: process.env.PAGE_ID,
             query: process.env.QUERY,
+            limit: process.env.LIMIT,
             replaceContent: process.env.REPLACE_CONTENT === 'true',
         };
     }
