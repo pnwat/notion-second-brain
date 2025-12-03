@@ -60,6 +60,7 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
         // Update properties if any
         let response;
         if (Object.keys(properties).length > 0) {
+            logger.info('Updating properties:', { properties });
             response = await notion.pages.update({
                 page_id: targetPageId,
                 properties: properties,
