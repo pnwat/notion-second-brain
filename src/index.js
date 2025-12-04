@@ -6,29 +6,21 @@ async function main() {
 
     // 1. Construct payload from individual environment variables
     if (process.env.ACTION) {
+        let params = {};
+        if (process.env.PAYLOAD) {
+            try {
+                params = JSON.parse(process.env.PAYLOAD);
+            } catch (error) {
+                logger.error('Failed to parse PAYLOAD JSON', { error: error.message, payload: process.env.PAYLOAD });
+                throw new Error(`Invalid PAYLOAD JSON: ${error.message}`);
+            }
+        }
+
         payload = {
             action: process.env.ACTION,
-            title: process.env.TITLE,
-            content: process.env.CONTENT,
-            category: process.env.CATEGORY,
-            tags: process.env.TAGS ? process.env.TAGS.split(',') : undefined,
-            pageId: process.env.PAGE_ID,
-            query: process.env.QUERY,
-            limit: process.env.LIMIT,
-            mode: process.env.MODE,
+            ...params,
             useMarkdown: process.env.USE_MARKDOWN !== 'false', // Default true
             autoFormat: process.env.AUTO_FORMAT !== 'false', // Default true
-            template: process.env.TEMPLATE,
-            subAction: process.env.SUB_ACTION,
-            name: process.env.NAME,
-            updates: process.env.UPDATES ? (() => {
-                try {
-                    return JSON.parse(process.env.UPDATES);
-                } catch (error) {
-                    logger.error('Failed to parse UPDATES JSON', { error: error.message, updates: process.env.UPDATES });
-                    throw new Error(`Invalid UPDATES JSON: ${error.message}`);
-                }
-            })() : undefined,
         };
     } else {
         logger.error('Error: No ACTION environment variable provided.');

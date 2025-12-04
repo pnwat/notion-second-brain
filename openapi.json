@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.4.0"
+        "version": "1.5.0"
     },
     "servers": [
         {
@@ -44,54 +44,9 @@
                                                 ],
                                                 "description": "The action to perform."
                                             },
-                                            "title": {
+                                            "payload": {
                                                 "type": "string",
-                                                "description": "Title of the note."
-                                            },
-                                            "content": {
-                                                "type": "string",
-                                                "description": "Content of the note."
-                                            },
-                                            "category": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "Tech",
-                                                    "Travel",
-                                                    "Finance",
-                                                    "Life",
-                                                    "Business",
-                                                    "Others"
-                                                ],
-                                                "description": "Category of the note."
-                                            },
-                                            "tags": {
-                                                "type": "string",
-                                                "description": "Comma-separated tags."
-                                            },
-                                            "pageId": {
-                                                "type": "string",
-                                                "description": "Page ID of the note (for update action)."
-                                            },
-                                            "query": {
-                                                "type": "string",
-                                                "description": "Search query (for search action)."
-                                            },
-                                            "limit": {
-                                                "type": "string",
-                                                "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
-                                            },
-                                            "updates": {
-                                                "type": "string",
-                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
-                                            },
-                                            "mode": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "append",
-                                                    "replace"
-                                                ],
-                                                "description": "Update mode for content. 'append' adds to the bottom, 'replace' overwrites existing content. Default is 'append'.",
-                                                "default": "append"
+                                                "description": "JSON string containing action-specific parameters. \n\nFor 'add': { \"title\": \"...\", \"content\": \"...\", \"category\": \"...\", \"tags\": \"tag1,tag2\", \"template\": \"...\" }\nFor 'update': { \"pageId\": \"...\", \"title\": \"...\", \"content\": \"...\", \"mode\": \"append|replace\" }\nFor 'search': { \"query\": \"...\", \"limit\": \"10\" }\nFor 'list_recent': { \"limit\": \"10\" }\nFor 'batch_update': { \"updates\": [...] }\nFor 'manage_template': { \"subAction\": \"list|get|save\", \"name\": \"...\", \"content\": \"...\" }"
                                             },
                                             "useMarkdown": {
                                                 "type": "string",
@@ -110,23 +65,6 @@
                                                 ],
                                                 "description": "Auto-format Markdown content for better structure. Default is 'true'.",
                                                 "default": "true"
-                                            },
-                                            "template": {
-                                                "type": "string",
-                                                "description": "Template name to use for creating a note (e.g. 'daily')."
-                                            },
-                                            "subAction": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "list",
-                                                    "get",
-                                                    "save"
-                                                ],
-                                                "description": "Sub-action for manage_template."
-                                            },
-                                            "name": {
-                                                "type": "string",
-                                                "description": "Template name for manage_template (get/save)."
                                             }
                                         },
                                         "required": [

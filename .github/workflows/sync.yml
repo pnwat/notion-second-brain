@@ -4,38 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Action to perform (add, update, search, list_recent, batch_update, export)'
+        description: 'Action to perform (add, update, search, list_recent, batch_update, export, manage_template)'
         required: true
         default: 'search'
-      title:
-        description: 'Title of the note (for add/update)'
+      payload:
+        description: 'JSON payload containing action-specific parameters (title, content, category, tags, pageId, query, limit, updates, mode, template, subAction, name)'
         required: false
-      content:
-        description: 'Content of the note (for add/update)'
-        required: false
-      category:
-        description: 'Category of the note (for add/update)'
-        required: false
-      tags:
-        description: 'Tags (comma separated) (for add/update)'
-        required: false
-      pageId:
-        description: 'Page ID (for update)'
-        required: false
-      query:
-        description: 'Search query (for search)'
-        required: false
-      limit:
-        description: 'Number of notes to return (for list_recent)'
-        required: false
-        default: '10'
-      updates:
-        description: 'JSON array of updates for batch_update action'
-        required: false
-      mode:
-        description: 'Update mode: append or replace'
-        required: false
-        default: 'append'
+        default: '{}'
       useMarkdown:
         description: 'Use Markdown conversion (true/false)'
         required: false
@@ -44,15 +19,6 @@ on:
         description: 'Auto-format Markdown content (true/false)'
         required: false
         default: 'true'
-      template:
-        description: 'Template name to use'
-        required: false
-      subAction:
-        description: 'Sub-action for manage_template (list/get/save)'
-        required: false
-      name:
-        description: 'Name for manage_template'
-        required: false
 
 jobs:
   sync:
@@ -74,18 +40,7 @@ jobs:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
           ACTION: ${{ inputs.action }}
-          TITLE: ${{ inputs.title }}
-          CONTENT: ${{ inputs.content }}
-          CATEGORY: ${{ inputs.category }}
-          TAGS: ${{ inputs.tags }}
-          PAGE_ID: ${{ inputs.pageId }}
-          QUERY: ${{ inputs.query }}
-          LIMIT: ${{ inputs.limit }}
-          UPDATES: ${{ inputs.updates }}
-          MODE: ${{ inputs.mode }}
+          PAYLOAD: ${{ inputs.payload }}
           USE_MARKDOWN: ${{ inputs.useMarkdown }}
           AUTO_FORMAT: ${{ inputs.autoFormat }}
-          TEMPLATE: ${{ inputs.template }}
-          SUB_ACTION: ${{ inputs.subAction }}
-          NAME: ${{ inputs.name }}
         run: node src/index.js
