@@ -25,15 +25,12 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
                 logger.warn(`Template not found: ${template}`);
             }
         } else if (category === 'Book' || category === '読書') {
-            // Auto-apply book_note template for reading notes
+            // For book notes, ignore AI-generated content and use only template
+            // This prevents ChatGPT from adding unwanted summaries
             const templateContent = await applyTemplate('book_note', { title });
             if (templateContent) {
-                if (finalContent) {
-                    finalContent = templateContent + '\n\n' + finalContent;
-                } else {
-                    finalContent = templateContent;
-                }
-                logger.info('Applied book_note template automatically');
+                finalContent = templateContent; // Don't append content for books
+                logger.info('Applied book_note template automatically (content ignored)');
             }
         }
 
