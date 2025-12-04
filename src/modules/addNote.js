@@ -3,6 +3,7 @@ const { splitText } = require('../utils');
 const { convertMarkdownToBlocks } = require('../utils/markdownConverter');
 const { formatMarkdown } = require('../utils/markdownFormatter');
 const { applyTemplate } = require('../utils/templateManager');
+const { enrichBookMetadata } = require('./enrichBookMetadata');
 const logger = require('../utils/logger');
 
 async function addNote({ title, content, tags = [], category = 'Others', useMarkdown = true, autoFormat = true, template }) {
@@ -73,6 +74,13 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
         });
 
         logger.info(`Successfully added note: ${response.url}`, { title, id: response.id });
+
+        // Enrich metadata if category is Book or 読書
+        if (category === 'Book' || category === '読書') {
+            // Run in background (don't await if we want faster response, but for CLI/Actions awaiting is safer to ensure completion)
+            await enrichBookMetadata(response.id, title);
+        }
+
         return response.url;
     } catch (error) {
         logger.error('Error adding note', { error: error.message });
