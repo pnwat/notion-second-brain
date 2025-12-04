@@ -9,7 +9,15 @@ async function main() {
         let params = {};
         if (process.env.PAYLOAD) {
             try {
-                params = JSON.parse(process.env.PAYLOAD);
+                // GitHub Actions may escape quotes, so we need to handle that
+                let payloadStr = process.env.PAYLOAD;
+
+                // If the payload starts and ends with quotes, remove them and unescape
+                if (payloadStr.startsWith('"') && payloadStr.endsWith('"')) {
+                    payloadStr = payloadStr.slice(1, -1).replace(/\\"/g, '"');
+                }
+
+                params = JSON.parse(payloadStr);
             } catch (error) {
                 logger.error('Failed to parse PAYLOAD JSON', { error: error.message, payload: process.env.PAYLOAD });
                 throw new Error(`Invalid PAYLOAD JSON: ${error.message}`);
