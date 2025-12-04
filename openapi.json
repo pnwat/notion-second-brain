@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.6.2"
+        "version": "1.6.3"
     },
     "servers": [
         {
@@ -22,6 +22,10 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
+                                "required": [
+                                    "ref",
+                                    "inputs"
+                                ],
                                 "properties": {
                                     "ref": {
                                         "type": "string",
@@ -30,6 +34,9 @@
                                     },
                                     "inputs": {
                                         "type": "object",
+                                        "required": [
+                                            "action"
+                                        ],
                                         "properties": {
                                             "action": {
                                                 "type": "string",
@@ -89,21 +96,29 @@
                                             },
                                             "mode": {
                                                 "type": "string",
+                                                "enum": [
+                                                    "append",
+                                                    "replace"
+                                                ],
+                                                "description": "Update mode: 'append' to add content, 'replace' to overwrite. Used with update action."
                                             },
-                                            "required": [
-                                                "ref",
-                                                "inputs"
-                                            ]
+                                            "section": {
+                                                "type": "string",
+                                                "description": "Target section name (e.g. '感想', 'クリップ') to append content to. Used with update action. Requires the section to be a toggle heading in the note."
+                                            }
                                         }
                                     }
-                                }
-                            },
-                            "responses": {
-                                "204": {
-                                    "description": "Workflow triggered successfully"
                                 }
                             }
                         }
                     }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Workflow triggered successfully"
+                    }
                 }
             }
+        }
+    }
+}
