@@ -1,9 +1,10 @@
 const { notion } = require('../notion');
 const { splitText } = require('../utils');
 const { convertMarkdownToBlocks } = require('../utils/markdownConverter');
+const { formatMarkdown } = require('../utils/markdownFormatter');
 const logger = require('../utils/logger');
 
-async function updateNote({ pageId, title, content, tags, category, replaceContent = false, mode = 'append', useMarkdown = true }) {
+async function updateNote({ pageId, title, content, tags, category, replaceContent = false, mode = 'append', useMarkdown = true, autoFormat = true }) {
     try {
         let targetPageId = pageId;
 
@@ -103,7 +104,15 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             // Prepare new content blocks
             let newBlocks;
             if (useMarkdown) {
-                newBlocks = convertMarkdownToBlocks(content);
+                // Auto-format if enabled
+                let processedContent = content;
+                if (autoFormat) {
+                    processedContent = await formatMarkdown(content);
+                    if (processedContent !== content) {
+                        logger.info('Applied auto-formatting to content');
+                    }
+                }
+                newBlocks = convertMarkdownToBlocks(processedContent);
             } else {
                 // Existing plain text processing
                 const chunks = splitText(content);

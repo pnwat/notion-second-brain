@@ -1,15 +1,25 @@
 const { notion, databaseId } = require('../notion');
 const { splitText } = require('../utils');
 const { convertMarkdownToBlocks } = require('../utils/markdownConverter');
+const { formatMarkdown } = require('../utils/markdownFormatter');
 const logger = require('../utils/logger');
 
-async function addNote({ title, content, tags = [], category = 'Others', useMarkdown = true }) {
+async function addNote({ title, content, tags = [], category = 'Others', useMarkdown = true, autoFormat = true }) {
     try {
         let children;
 
         if (useMarkdown && content) {
+            // Auto-format if enabled
+            let processedContent = content;
+            if (autoFormat) {
+                processedContent = await formatMarkdown(content);
+                if (processedContent !== content) {
+                    logger.info('Applied auto-formatting to content');
+                }
+            }
+
             // Markdown → Notion blocks conversion
-            children = convertMarkdownToBlocks(content);
+            children = convertMarkdownToBlocks(processedContent);
         } else if (content) {
             // Existing plain text processing (backward compatibility)
             const chunks = splitText(content);

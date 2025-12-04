@@ -40,6 +40,10 @@ on:
         description: 'Use Markdown conversion (true/false)'
         required: false
         default: 'true'
+      autoFormat:
+        description: 'Auto-format Markdown content (true/false)'
+        required: false
+        default: 'true'
 
 jobs:
   sync:
@@ -71,4 +75,5 @@ jobs:
           UPDATES: ${{ inputs.updates }}
           MODE: ${{ inputs.mode }}
           USE_MARKDOWN: ${{ inputs.useMarkdown }}
+          AUTO_FORMAT: ${{ inputs.autoFormat }}
         run: node src/index.js
