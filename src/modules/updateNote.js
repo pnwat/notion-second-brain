@@ -4,7 +4,7 @@ const { convertMarkdownToBlocks } = require('../utils/markdownConverter');
 const { formatMarkdown } = require('../utils/markdownFormatter');
 const logger = require('../utils/logger');
 
-async function updateNote({ pageId, title, content, tags, category, replaceContent = false, mode = 'append', useMarkdown = true, autoFormat = true }) {
+async function updateNote({ pageId, title, content, tags, category, replaceContent = false, mode = 'append', section, useMarkdown = true, autoFormat = true }) {
     try {
         let targetPageId = pageId;
 
@@ -86,8 +86,44 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
 
             logger.info(`Updating content with mode: ${updateMode}`);
 
-            if (updateMode === 'replace') {
-                // Replace mode: delete all existing blocks first
+            let targetBlockId = targetPageId;
+
+            // If section is specified, try to find the target block (toggle heading)
+            if (section) {
+                logger.info(`Looking for section: "${section}"`);
+                const pageBlocks = await notion.blocks.children.list({
+                    block_id: targetPageId,
+                });
+
+                const sectionBlock = pageBlocks.results.find(block => {
+                    const type = block.type;
+                    if (['heading_1', 'heading_2', 'heading_3'].includes(type)) {
+                        const text = block[type].rich_text.map(t => t.plain_text).join('');
+                        return text.includes(section);
+                    }
+                    return false;
+                });
+
+                if (sectionBlock) {
+                    logger.info(`Found section block: ${sectionBlock.id} (${sectionBlock.type})`);
+                    targetBlockId = sectionBlock.id;
+                    // If it's a replace mode within a section, we might want to clear the section first?
+                    // For now, let's assume 'append' behavior for sections unless 'replace' is explicitly requested for the section.
+                    // But the current 'replace' logic clears the WHOLE page.
+                    // If section is specified, 'replace' should probably only clear the section.
+
+                    if (updateMode === 'replace') {
+                        logger.info(`Clearing existing content in section "${section}"...`);
+                        const sectionChildren = await notion.blocks.children.list({ block_id: targetBlockId });
+                        for (const child of sectionChildren.results) {
+                            await notion.blocks.delete({ block_id: child.id });
+                        }
+                    }
+                } else {
+                    logger.warn(`Section "${section}" not found. Appending to end of page.`);
+                }
+            } else if (updateMode === 'replace') {
+                // Replace mode for whole page: delete all existing blocks first
                 logger.info('Clearing existing content for replace mode...');
                 const existingBlocks = await notion.blocks.children.list({
                     block_id: targetPageId,
@@ -132,14 +168,13 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
                 }));
             }
 
-            // Execute Append (for both append and replace modes, we append new blocks. 
-            // In replace mode, we just cleared the page first.)
+            // Execute Append
             await notion.blocks.children.append({
-                block_id: targetPageId,
+                block_id: targetBlockId,
                 children: newBlocks,
             });
 
-            logger.info(`Successfully updated content (mode: ${updateMode})`);
+            logger.info(`Successfully updated content (mode: ${updateMode}, section: ${section || 'none'})`);
         }
 
         logger.info(`Successfully updated note: ${response.url}`, { url: response.url });

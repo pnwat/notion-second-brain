@@ -77,36 +77,21 @@
                                             "subAction": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "list",
-                                                    "get",
-                                                    "save"
-                                                ],
-                                                "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
                                             },
-                                            "name": {
-                                                "type": "string",
-                                                "description": "Template name (for manage_template get/save actions)."
-                                            }
-                                        },
-                                        "required": [
-                                            "action"
-                                        ]
+                                            "required": [
+                                                "ref",
+                                                "inputs"
+                                            ]
+                                        }
                                     }
-                                },
-                                "required": [
-                                    "ref",
-                                    "inputs"
-                                ]
+                                }
+                            },
+                            "responses": {
+                                "204": {
+                                    "description": "Workflow triggered successfully"
+                                }
                             }
                         }
                     }
-                },
-                "responses": {
-                    "204": {
-                        "description": "Workflow triggered successfully"
-                    }
                 }
             }
-        }
-    }
-}

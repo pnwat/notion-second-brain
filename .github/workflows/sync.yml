@@ -28,6 +28,12 @@ on:
       name:
         description: 'Name for manage_template'
         required: false
+      mode:
+        description: 'Update mode (append/replace)'
+        required: false
+      section:
+        description: 'Section to append to (for update)'
+        required: false
 
 jobs:
   sync:
@@ -56,4 +62,6 @@ jobs:
           TEMPLATE: ${{ inputs.template }}
           SUB_ACTION: ${{ inputs.subAction }}
           NAME: ${{ inputs.name }}
+          MODE: ${{ inputs.mode }}
+          SECTION: ${{ inputs.section }}
         run: node src/index.js
