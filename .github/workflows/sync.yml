@@ -44,6 +44,15 @@ on:
         description: 'Auto-format Markdown content (true/false)'
         required: false
         default: 'true'
+      template:
+        description: 'Template name to use'
+        required: false
+      subAction:
+        description: 'Sub-action for manage_template (list/get/save)'
+        required: false
+      name:
+        description: 'Name for manage_template'
+        required: false
 
 jobs:
   sync:
@@ -76,4 +85,7 @@ jobs:
           MODE: ${{ inputs.mode }}
           USE_MARKDOWN: ${{ inputs.useMarkdown }}
           AUTO_FORMAT: ${{ inputs.autoFormat }}
+          TEMPLATE: ${{ inputs.template }}
+          SUB_ACTION: ${{ inputs.subAction }}
+          NAME: ${{ inputs.name }}
         run: node src/index.js

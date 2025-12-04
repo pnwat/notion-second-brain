@@ -18,6 +18,9 @@ async function main() {
             mode: process.env.MODE,
             useMarkdown: process.env.USE_MARKDOWN !== 'false', // Default true
             autoFormat: process.env.AUTO_FORMAT !== 'false', // Default true
+            template: process.env.TEMPLATE,
+            subAction: process.env.SUB_ACTION,
+            name: process.env.NAME,
             updates: process.env.UPDATES ? (() => {
                 try {
                     return JSON.parse(process.env.UPDATES);
