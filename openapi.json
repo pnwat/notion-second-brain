@@ -72,31 +72,128 @@
                                             },
                                             "query": {
                                                 "type": "string",
-                                                "description": "Search query (for search action)."
-                                            },
-                                            "limit": {
-                                                "type": "string",
-                                                "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
-                                            },
-                                            "updates": {
-                                                "type": "string",
-                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
-                                            },
-                                            "replaceContent": {
-                                "required": [
-                                    "ref",
-                                    "inputs"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "204": {
-                        "description": "Workflow triggered successfully"
-                    }
-                }
-            }
-        }
-    }
-}
+                                                {
+                                                    "openapi": "3.1.0",
+                                                    "info": {
+                                                        "title": "Notion Second Brain Sync",
+                                                        "description": "Sync notes to Notion via GitHub Actions.",
+                                                        "version": "1.2.0"
+                                                    },
+                                                    "servers": [
+                                                        {
+                                                            "url": "https://api.github.com"
+                                                        }
+                                                    ],
+                                                    "paths": {
+                                                        "/repos/pnwat/notion-second-brain/actions/workflows/sync.yml/dispatches": {
+                                                            "post": {
+                                                                "operationId": "triggerSync",
+                                                                "summary": "Trigger the sync workflow",
+                                                                "description": "Trigger the GitHub Action to sync notes to Notion.",
+                                                                "requestBody": {
+                                                                    "required": true,
+                                                                    "content": {
+                                                                        "application/json": {
+                                                                            "schema": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "ref": {
+                                                                                        "type": "string",
+                                                                                        "default": "master",
+                                                                                        "description": "The branch to run the workflow on."
+                                                                                    },
+                                                                                    "inputs": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "action": {
+                                                                                                "type": "string",
+                                                                                                "enum": [
+                                                                                                    "add",
+                                                                                                    "update",
+                                                                                                    "search",
+                                                                                                    "list_recent",
+                                                                                                    "batch_update"
+                                                                                                ],
+                                                                                                "description": "The action to perform."
+                                                                                            },
+                                                                                            "title": {
+                                                                                                "type": "string",
+                                                                                                "description": "Title of the note."
+                                                                                            },
+                                                                                            "content": {
+                                                                                                "type": "string",
+                                                                                                "description": "Content of the note."
+                                                                                            },
+                                                                                            "category": {
+                                                                                                "type": "string",
+                                                                                                "enum": [
+                                                                                                    "Tech",
+                                                                                                    "Travel",
+                                                                                                    "Finance",
+                                                                                                    "Life",
+                                                                                                    "Business",
+                                                                                                    "Others"
+                                                                                                ],
+                                                                                                "description": "Category of the note."
+                                                                                            },
+                                                                                            "tags": {
+                                                                                                "type": "string",
+                                                                                                "description": "Comma-separated tags."
+                                                                                            },
+                                                                                            "pageId": {
+                                                                                                "type": "string",
+                                                                                                "description": "Page ID of the note (for update action)."
+                                                                                            },
+                                                                                            "query": {
+                                                                                                "type": "string",
+                                                                                                "description": "Search query (for search action)."
+                                                                                            },
+                                                                                            "limit": {
+                                                                                                "type": "string",
+                                                                                                "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
+                                                                                            },
+                                                                                            "updates": {
+                                                                                                "type": "string",
+                                                                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
+                                                                                            },
+                                                                                            "mode": {
+                                                                                                "type": "string",
+                                                                                                "enum": [
+                                                                                                    "append",
+                                                                                                    "replace"
+                                                                                                ],
+                                                                                                "description": "Update mode for content. 'append' adds to the bottom, 'replace' overwrites existing content. Default is 'append'.",
+                                                                                                "default": "append"
+                                                                                            },
+                                                                                            "replaceContent": {
+                                                                                                "type": "string",
+                                                                                                "enum": [
+                                                                                                    "true",
+                                                                                                    "false"
+                                                                                                ],
+                                                                                                "default": "false",
+                                                                                                "description": "Deprecated. Use mode='replace' instead. If true, replaces existing content."
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "action"
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "ref",
+                                                                                    "inputs"
+                                                                                ]
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "responses": {
+                                                                    "204": {
+                                                                        "description": "Workflow triggered successfully"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
