@@ -25,12 +25,25 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
                 logger.warn(`Template not found: ${template}`);
             }
         } else if (category === 'Book' || category === '読書') {
-            // For book notes, ignore AI-generated content and use only template
-            // This prevents ChatGPT from adding unwanted summaries
+            // For book notes, apply template and optionally append user content
             const templateContent = await applyTemplate('book_note', { title });
             if (templateContent) {
-                finalContent = templateContent; // Don't append content for books
-                logger.info('Applied book_note template automatically (content ignored)');
+                // Check if content looks like user-provided text (short, personal)
+                // vs AI-generated summary (long, formal, contains phrases like "本書は", "について書かれた")
+                const isLikelyAISummary = content && (
+                    content.length > 200 ||
+                    /本書は|について書かれた|概要|要約|まとめ/.test(content)
+                );
+
+                if (content && !isLikelyAISummary) {
+                    // User provided short personal note/impression
+                    finalContent = templateContent + '\n\n' + content;
+                    logger.info('Applied book_note template with user content');
+                } else {
+                    // No content or AI-generated summary detected
+                    finalContent = templateContent;
+                    logger.info('Applied book_note template (AI content filtered)');
+                }
             }
         }
 
