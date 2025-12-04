@@ -22,10 +22,6 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
-                                "required": [
-                                    "ref",
-                                    "inputs"
-                                ],
                                 "properties": {
                                     "ref": {
                                         "type": "string",
@@ -34,9 +30,6 @@
                                     },
                                     "inputs": {
                                         "type": "object",
-                                        "required": [
-                                            "action"
-                                        ],
                                         "properties": {
                                             "action": {
                                                 "type": "string",
@@ -53,11 +46,11 @@
                                             },
                                             "title": {
                                                 "type": "string",
-                                                "description": "Title of the note. For Book category, use ONLY the book title."
+                                                "description": "Title of the note."
                                             },
                                             "content": {
                                                 "type": "string",
-                                                "description": "Content of the note. For Book category, leave EMPTY."
+                                                "description": "Content of the note."
                                             },
                                             "category": {
                                                 "type": "string",
@@ -68,7 +61,8 @@
                                                     "Life",
                                                     "Business",
                                                     "Others",
-                                                    "Book"
+                                                    "Book",
+                                                    "読書"
                                                 ],
                                                 "description": "Category of the note."
                                             },
@@ -76,21 +70,52 @@
                                                 "type": "string",
                                                 "description": "Comma-separated tags."
                                             },
+                                            "pageId": {
+                                                "type": "string",
+                                                "description": "Page ID of the note (for update action)."
+                                            },
+                                            "query": {
+                                                "type": "string",
+                                                "description": "Search query (for search action)."
+                                            },
+                                            "limit": {
+                                                "type": "string",
+                                                "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
+                                            },
+                                            "updates": {
+                                                "type": "string",
+                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
+                                            },
                                             "mode": {
                                                 "type": "string",
                                                 "enum": [
                                                     "append",
                                                     "replace"
                                                 ],
-                                                "description": "Update mode for content."
+                                                "description": "Update mode for content. 'append' adds to the bottom, 'replace' overwrites existing content. Default is 'append'.",
+                                                "default": "append"
                                             },
-                                            "section": {
+                                            "useMarkdown": {
                                                 "type": "string",
-                                                "description": "Target section name for update action."
+                                                "enum": [
+                                                    "true",
+                                                    "false"
+                                                ],
+                                                "description": "Use Markdown conversion for content. Default is 'true'.",
+                                                "default": "true"
+                                            },
+                                            "autoFormat": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "true",
+                                                    "false"
+                                                ],
+                                                "description": "Auto-format Markdown content for better structure. Default is 'true'.",
+                                                "default": "true"
                                             },
                                             "template": {
                                                 "type": "string",
-                                                "description": "Template name to use."
+                                                "description": "Template name to use for creating a note (e.g. 'daily')."
                                             },
                                             "subAction": {
                                                 "type": "string",
@@ -103,11 +128,22 @@
                                             },
                                             "name": {
                                                 "type": "string",
-                                                "description": "Template name for manage_template."
+                                                "description": "Template name for manage_template (get/save)."
+                                            },
+                                            "section": {
+                                                "type": "string",
+                                                "description": "Target section name (e.g. 'クリップ', '感想') to append content to. Used with update action."
                                             }
-                                        }
+                                        },
+                                        "required": [
+                                            "action"
+                                        ]
                                     }
-                                }
+                                },
+                                "required": [
+                                    "ref",
+                                    "inputs"
+                                ]
                             }
                         }
                     }
