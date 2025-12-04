@@ -24,6 +24,17 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
             } else {
                 logger.warn(`Template not found: ${template}`);
             }
+        } else if (category === 'Book' || category === '読書') {
+            // Auto-apply book_note template for reading notes
+            const templateContent = await applyTemplate('book_note', { title });
+            if (templateContent) {
+                if (finalContent) {
+                    finalContent = templateContent + '\n\n' + finalContent;
+                } else {
+                    finalContent = templateContent;
+                }
+                logger.info('Applied book_note template automatically');
+            }
         }
 
         if (useMarkdown && finalContent) {
