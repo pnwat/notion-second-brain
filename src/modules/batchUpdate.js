@@ -46,8 +46,8 @@ async function batchUpdate({ updates }) {
                 results.push({
                     id: update.pageId,
                     title: update.title,
-                    status: 'warning',
-                    message: `Update appeared successful but value did not change. ${verificationMsg}`,
+                    status: 'error', // Changed to error to ensure visibility
+                    error: `Update appeared successful but value did not change. ${verificationMsg}`, // Use 'error' field for consistency
                     url: url
                 });
             } else {
