@@ -1,8 +1,9 @@
 const { notion } = require('../notion');
 const { splitText } = require('../utils');
+const { convertMarkdownToBlocks } = require('../utils/markdownConverter');
 const logger = require('../utils/logger');
 
-async function updateNote({ pageId, title, content, tags, category, replaceContent = false, mode = 'append' }) {
+async function updateNote({ pageId, title, content, tags, category, replaceContent = false, mode = 'append', useMarkdown = true }) {
     try {
         let targetPageId = pageId;
 
@@ -100,21 +101,27 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             }
 
             // Prepare new content blocks
-            const chunks = splitText(content);
-            const newBlocks = chunks.map(chunk => ({
-                object: 'block',
-                type: 'paragraph',
-                paragraph: {
-                    rich_text: [
-                        {
-                            type: 'text',
-                            text: {
-                                content: chunk,
+            let newBlocks;
+            if (useMarkdown) {
+                newBlocks = convertMarkdownToBlocks(content);
+            } else {
+                // Existing plain text processing
+                const chunks = splitText(content);
+                newBlocks = chunks.map(chunk => ({
+                    object: 'block',
+                    type: 'paragraph',
+                    paragraph: {
+                        rich_text: [
+                            {
+                                type: 'text',
+                                text: {
+                                    content: chunk,
+                                },
                             },
-                        },
-                    ],
-                },
-            }));
+                        ],
+                    },
+                }));
+            }
 
             // Execute Append (for both append and replace modes, we append new blocks. 
             // In replace mode, we just cleared the page first.)

@@ -1,0 +1,308 @@
+﻿=== PAGE METADATA ===
+{
+  "object": "page",
+  "id": "2beb6f07-73e2-81c3-a9de-ca3206a3b41a",
+  "created_time": "2025-12-03T12:31:00.000Z",
+  "last_edited_time": "2025-12-03T13:23:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "database_id",
+    "database_id": "2bcb6f07-73e2-8082-8acb-ccdd3bcc49fb"
+  },
+  "archived": false,
+  "in_trash": false,
+  "is_locked": false,
+  "properties": {
+    "繧ｿ繧ｰ": {
+      "id": "WnhB",
+      "type": "multi_select",
+      "multi_select": [
+        {
+          "id": "fb702be8-89b9-4559-962a-1e14037d80ef",
+          "name": "Notion",
+          "color": "default"
+        },
+        {
+          "id": "163cc6ae-d00d-4316-aaea-a5b2ed90da49",
+          "name": " ChatGPT",
+          "color": "pink"
+        },
+        {
+          "id": "016dc2a0-3c49-4d97-ba4c-5302254938d5",
+          "name": " Markdown",
+          "color": "purple"
+        },
+        {
+          "id": "cc11398e-8cb7-4ea3-ab03-407b4dd1ac4e",
+          "name": " Integration",
+          "color": "green"
+        },
+        {
+          "id": "eac3ebc0-13e5-432d-9c67-7f60223a9657",
+          "name": " AI",
+          "color": "orange"
+        },
+        {
+          "id": "9df7273f-e712-41fc-9406-ec4341217b6a",
+          "name": " UX",
+          "color": "pink"
+        },
+        {
+          "id": "17ae5b65-0268-45ba-bd1b-63f745b285f3",
+          "name": " Documentation",
+          "color": "red"
+        }
+      ]
+    },
+    "譛邨よ峩譁ｰ譌･譎・: {
+      "id": "aU%3C%3E",
+      "type": "last_edited_time",
+      "last_edited_time": "2025-12-03T13:23:00.000Z"
+    },
+    "繧ｫ繝・ざ繝ｪ": {
+      "id": "ds%60G",
+      "type": "select",
+      "select": {
+        "id": "eb15a253-14dd-4d47-a094-8342c5c9b53b",
+        "name": "Second Brain 莉墓ｧ・,
+        "color": "orange"
+      }
+    },
+    "菴懈・譌･譎・: {
+      "id": "wVb%3F",
+      "type": "created_time",
+      "created_time": "2025-12-03T12:31:00.000Z"
+    },
+    "蜷榊燕": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Notion Second Brain 讖溯・謠先｡医・螳溯｣・ｨ育判・・arkdown蟇ｾ蠢懃ｷｨ・・,
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Notion Second Brain 讖溯・謠先｡医・螳溯｣・ｨ育判・・arkdown蟇ｾ蠢懃ｷｨ・・,
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/Notion-Second-Brain-Markdown-2beb6f0773e281c3a9deca3206a3b41a",
+  "public_url": null,
+  "request_id": "1eaa198a-b84c-43a3-9f97-2f9a07eebf95"
+}
+
+=== PAGE BLOCKS ===
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "block",
+      "id": "2beb6f07-73e2-812b-854f-ef535a4a3aff",
+      "parent": {
+        "type": "page_id",
+        "page_id": "2beb6f07-73e2-81c3-a9de-ca3206a3b41a"
+      },
+      "created_time": "2025-12-03T12:31:00.000Z",
+      "last_edited_time": "2025-12-03T12:31:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "# ｧ Notion Second Brain 讖溯・謠先｡医・螳溯｣・ｨ育判・・arkdown蟇ｾ蠢懃ｷｨ・噂n\n## 識 讎りｦ―nChatGPT ﾃ・Notion 騾｣謳ｺ縺ｮ縲郡econd Brain縲阪す繧ｹ繝・Β縺ｫ縺翫￠繧九｀arkdown謨ｴ蠖｢繝ｻ繝ｪ繝・メ繝悶Ο繝・け蟇ｾ蠢懊・謾ｹ蝟・ｨ育判縲・n莉雁屓縺ｮ螳溯｣・ｯ・峇縺ｧ縺ｯ **蜿梧婿蜷大､画鋤・・otion竊熱arkdown・・* 縺翫ｈ縺ｳ **繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹・* 繧剃ｸｭ蠢・↓縲ゞX蜷台ｸ翫→繝峨く繝･繝｡繝ｳ繝亥・蛻ｩ逕ｨ諤ｧ繧貞ｼｷ蛹悶☆繧九・n\n---\n\n## 笞呻ｸ・螳溯｣・ｯｾ雎｡・医ヵ繧ｧ繝ｼ繧ｺ1縲・・噂n\n### 竭 Markdown繝励Ξ繝薙Η繝ｼ莉倥″菫晏ｭ禄n- **逶ｮ逧・** 菫晏ｭ伜燕縺ｫChatGPT荳翫〒繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ繧堤｢ｺ隱阪〒縺阪ｋ縲・ \n- **螳溯｣・｡・** ChatGPT縺君otion繝悶Ο繝・け螟画鋤邨先棡繧剃ｸ譎ら噪縺ｫ陦ｨ遉ｺ縺励√Θ繝ｼ繧ｶ繝ｼ遒ｺ隱榊ｾ後↓菫晏ｭ伜ｮ溯｡後・ \n- **蜉ｹ譫・** Markdown蟠ｩ繧後・隱､菫晏ｭ倥・髦ｲ豁｢縲・n\n---\n\n### 竭｡ 蜿梧婿蜷大､画鋤・・arkdown 竍・Notion・噂n- **逶ｮ逧・** Notion縺ｮ繝壹・繧ｸ繧樽arkdown蠖｢蠑上〒繧ｨ繧ｯ繧ｹ繝昴・繝茨ｼ・・邱ｨ髮・庄閭ｽ縺ｫ縲・ \n- **謚陦・** `@tryfabric/martian` 縺ｮ `blocksToMarkdown` / `markdownToBlocks` 繧貞茜逕ｨ縲・ \n- **蜉ｹ譫・** Notion繧堤衍隴倥・繝上ヶ縺ｫ縺励▽縺､縲；itHub繝ｻDocs繝ｻChatGPT髢薙〒蜀榊茜逕ｨ縺悟ｮｹ譏薙↓縲・n\n---\n\n### 竭｢ 繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹暴n- **逶ｮ逧・** Markdown荳ｭ縺ｮ ```js / ```python 縺ｪ縺ｩ繧誰otion縺ｮ繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け縺ｫ螟画鋤縲・ \n- **蜉ｹ譫・** 謚陦薙ヮ繝ｼ繝医ｄ莉墓ｧ俶嶌縺ｮ蜀咲樟蠎ｦ繧貞髄荳翫・ \n- **蟇ｾ蠢・** 險隱櫁・蜍墓､懷・繝ｻ繝上う繝ｩ繧､繝医・陦ｨ遉ｺ繝｢繝ｼ繝画欠螳夲ｼ・ight/Dark・峨・n\n---\n\n### 竭｣ AI謨ｴ蠖｢繧ｪ繝励す繝ｧ繝ｳ\n- **逶ｮ逧・** ChatGPT縺瑚ｦ句・縺玲ｧ矩繧・ｮ・擅譖ｸ縺阪ｒ閾ｪ蜍墓紛逅・・ \n- **螳溯｣・** 菫晏ｭ伜燕縺ｫ讒区枚隗｣譫・竊・Markdown髫主ｱ､陬懈ｭ｣縲・ \n- **蜉ｹ譫・** 譖ｸ縺肴淵繧峨＠繝｡繝｢縺瑚・蜍慕噪縺ｫ鄒弱＠縺・ｧ矩縺ｸ螟画鋤縲・n\n---\n\n### 竭､ 謨ｰ蠑・/ Mermaid / 蝗ｳ蠑上し繝昴・繝・n- **逶ｮ逧・** 謨ｰ蠑擾ｼ・aTeX・峨ｄ繝輔Ο繝ｼ繝√Ε繝ｼ繝茨ｼ・ermaid・峨ｒNotion蜀・〒豁｣縺励￥陦ｨ遉ｺ縲・ \n- **謚陦・** LaTeX 竊・MathBlock縲｀ermaid 竊・SVG螟画鋤縲・ \n- **蜉ｹ譫・** 謚陦捺枚譖ｸ繧・ｨｭ險郁ｳ・侭縺ｮ陦ｨ迴ｾ蜉帙′蜷台ｸ翫・n\n---\n\n### 竭･ 繝・Φ繝励Ξ繝ｼ繝磯｣蜍穂ｿ晏ｭ禄n- **逶ｮ逧・** 繧ｫ繝・ざ繝ｪ縺ｫ蠢懊§縺ｦNotion繝・Φ繝励Ξ繝ｼ繝医ｒ閾ｪ蜍暮←逕ｨ縲・ \n- **蜉ｹ譫・** 荳雋ｫ縺励◆繝輔か繝ｼ繝槭ャ繝医〒繝弱・繝医′菴懈・縺輔ｌ縲∵､懃ｴ｢繝ｻ謨ｴ逅・′螳ｹ譏薙↓縲・ \n- **萓・** category: Tech 竊・謚陦薙Γ繝｢繝・Φ繝励Ξ繝ｼ繝磯←逕ｨ縲・n\n---\n\n## 庁 莉雁屓縺ｯ繧｢繧､繝・ぅ繧｢繝｡繝｢縺ｫ逡吶ａ繧区署譯茨ｼ医ヵ繧ｧ繝ｼ繧ｺ3莉･髯搾ｼ噂n\n### 竭ｦ GitHub README蜷梧悄讖溯・\n- **讎りｦ・** Notion繝峨く繝･繝｡繝ｳ繝医ｒ閾ｪ蜍輔〒GitHub縺ｫ蜷梧悄・・arkdown蛹厄ｼ峨・ \n- **逶ｮ逧・** Notion縺ｮ險ｭ險域嶌繧竪itHub Docs縺ｸ閾ｪ蜍募・髢九・ \n- **繧ｹ繝・・繧ｿ繧ｹ:** 蟆・擂逧・↓螳溯｣・ｺ亥ｮ夲ｼ医ヵ繧ｧ繝ｼ繧ｺ3・峨・n\n---\n\n### 竭ｧ ChatGPT蜀・otion繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ\n- **讎りｦ・** ChatGPT荳翫〒Notion繝悶Ο繝・け繧偵◎縺ｮ縺ｾ縺ｾ陦ｨ遉ｺ縺吶ｋUI縲・ \n- **逶ｮ逧・** 縲君otion荳翫・隕九◆逶ｮ縲阪ｒ菫晏ｭ伜燕縺ｫ蜿ｯ隕門喧縲・ \n- **繧ｹ繝・・繧ｿ繧ｹ:** UX諡｡蠑ｵ繧｢繧､繝・ぅ繧｢・医ヵ繧ｧ繝ｼ繧ｺ4・峨・n\n---\n\n## 噫 莉雁屓縺ｮ髢狗匱繧ｴ繝ｼ繝ｫ\n- Markdown竊誰otion繝悶Ο繝・け螟画鋤縺ｮ螳牙ｮ壼喧  \n- Notion竊樽arkdown縺ｮ騾・､画鋤螳溯｣・ \n- 繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹・+ AI謨ｴ蠖｢蝓ｺ逶､縺ｮ遒ｺ遶・ \n- Phase3莉･髯搾ｼ・itHub蜷梧悄繝ｻ繝励Ξ繝薙Η繝ｼUI・峨・蠕檎ｶ壹〒諡｡蠑ｵ莠亥ｮ喀n\n---\n\n## 迫 髢｢騾｣繝峨く繝･繝｡繝ｳ繝・n- [Notion Second Brain 謾ｹ蝟・署譯井ｻ墓ｧ俶嶌・亥ｮ悟・迚茨ｼ云(link_to_spec)\n- [Notion Second Brain 莉墓ｧ俶嶌繝・・繧ｿ繝吶・繧ｹ](link_to_db)\n\n---\n\n## 翌・・繧ｫ繝・ざ繝ｪ: Tech / AI / UX / Integration\n## 捷・・繧ｿ繧ｰ: Markdown, Notion API, ChatGPT, Integration, AI UX",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "# ｧ Notion Second Brain 讖溯・謠先｡医・螳溯｣・ｨ育判・・arkdown蟇ｾ蠢懃ｷｨ・噂n\n## 識 讎りｦ―nChatGPT ﾃ・Notion 騾｣謳ｺ縺ｮ縲郡econd Brain縲阪す繧ｹ繝・Β縺ｫ縺翫￠繧九｀arkdown謨ｴ蠖｢繝ｻ繝ｪ繝・メ繝悶Ο繝・け蟇ｾ蠢懊・謾ｹ蝟・ｨ育判縲・n莉雁屓縺ｮ螳溯｣・ｯ・峇縺ｧ縺ｯ **蜿梧婿蜷大､画鋤・・otion竊熱arkdown・・* 縺翫ｈ縺ｳ **繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹・* 繧剃ｸｭ蠢・↓縲ゞX蜷台ｸ翫→繝峨く繝･繝｡繝ｳ繝亥・蛻ｩ逕ｨ諤ｧ繧貞ｼｷ蛹悶☆繧九・n\n---\n\n## 笞呻ｸ・螳溯｣・ｯｾ雎｡・医ヵ繧ｧ繝ｼ繧ｺ1縲・・噂n\n### 竭 Markdown繝励Ξ繝薙Η繝ｼ莉倥″菫晏ｭ禄n- **逶ｮ逧・** 菫晏ｭ伜燕縺ｫChatGPT荳翫〒繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ繧堤｢ｺ隱阪〒縺阪ｋ縲・ \n- **螳溯｣・｡・** ChatGPT縺君otion繝悶Ο繝・け螟画鋤邨先棡繧剃ｸ譎ら噪縺ｫ陦ｨ遉ｺ縺励√Θ繝ｼ繧ｶ繝ｼ遒ｺ隱榊ｾ後↓菫晏ｭ伜ｮ溯｡後・ \n- **蜉ｹ譫・** Markdown蟠ｩ繧後・隱､菫晏ｭ倥・髦ｲ豁｢縲・n\n---\n\n### 竭｡ 蜿梧婿蜷大､画鋤・・arkdown 竍・Notion・噂n- **逶ｮ逧・** Notion縺ｮ繝壹・繧ｸ繧樽arkdown蠖｢蠑上〒繧ｨ繧ｯ繧ｹ繝昴・繝茨ｼ・・邱ｨ髮・庄閭ｽ縺ｫ縲・ \n- **謚陦・** `@tryfabric/martian` 縺ｮ `blocksToMarkdown` / `markdownToBlocks` 繧貞茜逕ｨ縲・ \n- **蜉ｹ譫・** Notion繧堤衍隴倥・繝上ヶ縺ｫ縺励▽縺､縲；itHub繝ｻDocs繝ｻChatGPT髢薙〒蜀榊茜逕ｨ縺悟ｮｹ譏薙↓縲・n\n---\n\n### 竭｢ 繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹暴n- **逶ｮ逧・** Markdown荳ｭ縺ｮ ```js / ```python 縺ｪ縺ｩ繧誰otion縺ｮ繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け縺ｫ螟画鋤縲・ \n- **蜉ｹ譫・** 謚陦薙ヮ繝ｼ繝医ｄ莉墓ｧ俶嶌縺ｮ蜀咲樟蠎ｦ繧貞髄荳翫・ \n- **蟇ｾ蠢・** 險隱櫁・蜍墓､懷・繝ｻ繝上う繝ｩ繧､繝医・陦ｨ遉ｺ繝｢繝ｼ繝画欠螳夲ｼ・ight/Dark・峨・n\n---\n\n### 竭｣ AI謨ｴ蠖｢繧ｪ繝励す繝ｧ繝ｳ\n- **逶ｮ逧・** ChatGPT縺瑚ｦ句・縺玲ｧ矩繧・ｮ・擅譖ｸ縺阪ｒ閾ｪ蜍墓紛逅・・ \n- **螳溯｣・** 菫晏ｭ伜燕縺ｫ讒区枚隗｣譫・竊・Markdown髫主ｱ､陬懈ｭ｣縲・ \n- **蜉ｹ譫・** 譖ｸ縺肴淵繧峨＠繝｡繝｢縺瑚・蜍慕噪縺ｫ鄒弱＠縺・ｧ矩縺ｸ螟画鋤縲・n\n---\n\n### 竭､ 謨ｰ蠑・/ Mermaid / 蝗ｳ蠑上し繝昴・繝・n- **逶ｮ逧・** 謨ｰ蠑擾ｼ・aTeX・峨ｄ繝輔Ο繝ｼ繝√Ε繝ｼ繝茨ｼ・ermaid・峨ｒNotion蜀・〒豁｣縺励￥陦ｨ遉ｺ縲・ \n- **謚陦・** LaTeX 竊・MathBlock縲｀ermaid 竊・SVG螟画鋤縲・ \n- **蜉ｹ譫・** 謚陦捺枚譖ｸ繧・ｨｭ險郁ｳ・侭縺ｮ陦ｨ迴ｾ蜉帙′蜷台ｸ翫・n\n---\n\n### 竭･ 繝・Φ繝励Ξ繝ｼ繝磯｣蜍穂ｿ晏ｭ禄n- **逶ｮ逧・** 繧ｫ繝・ざ繝ｪ縺ｫ蠢懊§縺ｦNotion繝・Φ繝励Ξ繝ｼ繝医ｒ閾ｪ蜍暮←逕ｨ縲・ \n- **蜉ｹ譫・** 荳雋ｫ縺励◆繝輔か繝ｼ繝槭ャ繝医〒繝弱・繝医′菴懈・縺輔ｌ縲∵､懃ｴ｢繝ｻ謨ｴ逅・′螳ｹ譏薙↓縲・ \n- **萓・** category: Tech 竊・謚陦薙Γ繝｢繝・Φ繝励Ξ繝ｼ繝磯←逕ｨ縲・n\n---\n\n## 庁 莉雁屓縺ｯ繧｢繧､繝・ぅ繧｢繝｡繝｢縺ｫ逡吶ａ繧区署譯茨ｼ医ヵ繧ｧ繝ｼ繧ｺ3莉･髯搾ｼ噂n\n### 竭ｦ GitHub README蜷梧悄讖溯・\n- **讎りｦ・** Notion繝峨く繝･繝｡繝ｳ繝医ｒ閾ｪ蜍輔〒GitHub縺ｫ蜷梧悄・・arkdown蛹厄ｼ峨・ \n- **逶ｮ逧・** Notion縺ｮ險ｭ險域嶌繧竪itHub Docs縺ｸ閾ｪ蜍募・髢九・ \n- **繧ｹ繝・・繧ｿ繧ｹ:** 蟆・擂逧・↓螳溯｣・ｺ亥ｮ夲ｼ医ヵ繧ｧ繝ｼ繧ｺ3・峨・n\n---\n\n### 竭ｧ ChatGPT蜀・otion繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ\n- **讎りｦ・** ChatGPT荳翫〒Notion繝悶Ο繝・け繧偵◎縺ｮ縺ｾ縺ｾ陦ｨ遉ｺ縺吶ｋUI縲・ \n- **逶ｮ逧・** 縲君otion荳翫・隕九◆逶ｮ縲阪ｒ菫晏ｭ伜燕縺ｫ蜿ｯ隕門喧縲・ \n- **繧ｹ繝・・繧ｿ繧ｹ:** UX諡｡蠑ｵ繧｢繧､繝・ぅ繧｢・医ヵ繧ｧ繝ｼ繧ｺ4・峨・n\n---\n\n## 噫 莉雁屓縺ｮ髢狗匱繧ｴ繝ｼ繝ｫ\n- Markdown竊誰otion繝悶Ο繝・け螟画鋤縺ｮ螳牙ｮ壼喧  \n- Notion竊樽arkdown縺ｮ騾・､画鋤螳溯｣・ \n- 繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹・+ AI謨ｴ蠖｢蝓ｺ逶､縺ｮ遒ｺ遶・ \n- Phase3莉･髯搾ｼ・itHub蜷梧悄繝ｻ繝励Ξ繝薙Η繝ｼUI・峨・蠕檎ｶ壹〒諡｡蠑ｵ莠亥ｮ喀n\n---\n\n## 迫 髢｢騾｣繝峨く繝･繝｡繝ｳ繝・n- [Notion Second Brain 謾ｹ蝟・署譯井ｻ墓ｧ俶嶌・亥ｮ悟・迚茨ｼ云(link_to_spec)\n- [Notion Second Brain 莉墓ｧ俶嶌繝・・繧ｿ繝吶・繧ｹ](link_to_db)\n\n---\n\n## 翌・・繧ｫ繝・ざ繝ｪ: Tech / AI / UX / Integration\n## 捷・・繧ｿ繧ｰ: Markdown, Notion API, ChatGPT, Integration, AI UX",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "2beb6f07-73e2-8059-89bf-e8f681d78341",
+      "parent": {
+        "type": "page_id",
+        "page_id": "2beb6f07-73e2-81c3-a9de-ca3206a3b41a"
+      },
+      "created_time": "2025-12-03T12:31:00.000Z",
+      "last_edited_time": "2025-12-03T12:31:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "1a5672c9-0d03-4602-befb-8b7b97fc9a88"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "1a5672c9-0d03-4602-befb-8b7b97fc9a88"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "2beb6f07-73e2-805d-9485-ce333d4e1a70",
+      "parent": {
+        "type": "page_id",
+        "page_id": "2beb6f07-73e2-81c3-a9de-ca3206a3b41a"
+      },
+      "created_time": "2025-12-03T12:31:00.000Z",
+      "last_edited_time": "2025-12-03T12:31:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "1a5672c9-0d03-4602-befb-8b7b97fc9a88"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "1a5672c9-0d03-4602-befb-8b7b97fc9a88"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "2beb6f07-73e2-819d-9c35-ed4019dee308",
+      "parent": {
+        "type": "page_id",
+        "page_id": "2beb6f07-73e2-81c3-a9de-ca3206a3b41a"
+      },
+      "created_time": "2025-12-03T12:34:00.000Z",
+      "last_edited_time": "2025-12-03T12:34:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "# ｧ Notion Second Brain 讖溯・謠先｡医・螳溯｣・ｨ育判・・arkdown蟇ｾ蠢懃ｷｨ / 螳悟・迚・2・噂n\n## 識 逶ｮ逧ЫnChatGPT縺ｧ菴懈・縺励◆Markdown蠖｢蠑上・繝弱・繝医ｒ縲・*Notion荳翫〒繝ｪ繝・メ繝・く繧ｹ繝医→縺励※豁｣遒ｺ縺ｫ蜀咲樟菫晏ｭ・*縺ｧ縺阪ｋ繧医≧縺ｫ縺吶ｋ縲・ \n縺薙ｌ縺ｯ縲郡econd Brain縲阪す繧ｹ繝・Β縺ｮ荳ｭ譬ｸ縺ｨ縺ｪ繧区ｩ溯・縺ｧ縺ゅｊ縲｀arkdown讒矩繧堤ｶｭ謖√＠縺溘∪縺ｾ蜿梧婿蜷代↓蜷梧悄繝ｻ邱ｨ髮・庄閭ｽ縺ｪ遏･隴伜渕逶､繧堤岼謖・☆縲・ \n\n---\n\n## 笞呻ｸ・繝輔ぉ繝ｼ繧ｺ蛻･螳溯｣・婿驥拿n### ｧｩ 繝輔ぉ繝ｼ繧ｺ1・哺arkdown 竊・Notion 繝ｪ繝・メ繝悶Ο繝・け螟画鋤\n- **逶ｮ逧・** ChatGPT縺檎函謌舌＠縺櫪arkdown繧誰otion繝悶Ο繝・け讒矩・郁ｦ句・縺励・繝ｪ繧ｹ繝医・繧ｳ繝ｼ繝峨・螟ｪ蟄励↑縺ｩ・峨→縺励※菫晏ｭ倥・ \n- **謚陦・** `@tryfabric/martian` 繧貞茜逕ｨ縺励※ `markdownToBlocks(content)` 繧堤函謌舌・ \n- **譛溷ｾ・柑譫・** 繝励Ξ繝ｼ繝ｳ繝・く繧ｹ繝井ｿ晏ｭ倥ｒ隗｣豸医＠縲¨otion荳翫〒繧りｦ冶ｦ夂噪縺ｫ謨ｴ縺｣縺滓ｧ矩繧貞・迴ｾ縲・ \n- **繧ｳ繝ｼ繝我ｾ・**\n```js\nimport { markdownToBlocks } from \"@tryfabric/martian\";\nconst blocks = markdownToBlocks(content);\nawait notion.pages.create({\n  parent: { database_id: process.env.NOTION_DB_ID },\n  properties,\n  children: blocks\n});\n```\n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ2・壼曙譁ｹ蜷大､画鋤・・otion 竊・Markdown・噂n- **逶ｮ逧・** Notion繝壹・繧ｸ繧樽arkdown蠖｢蠑上〒繧ｨ繧ｯ繧ｹ繝昴・繝亥庄閭ｽ縺ｫ縺吶ｋ縲・ \n- **謚陦・** `blocksToMarkdown()` 繧堤畑縺・※Notion繝悶Ο繝・け繧樽arkdown譁・ｭ怜・縺ｫ螟画鋤縲・ \n- **蜉ｹ譫・** GitHub騾｣謳ｺ繝ｻ繝舌ャ繧ｯ繧｢繝・・繝ｻChatGPT縺ｧ縺ｮ蜀榊茜逕ｨ縺悟ｮｹ譏薙↓縲・ \n- **逋ｺ螻・** Notion荳翫・譖ｴ譁ｰ繧竪itHub Actions邨檎罰縺ｧMarkdown繝輔ぃ繧､繝ｫ縺ｸ蜿肴丐縺吶ｋ縺薙→繧ょ庄閭ｽ縲・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ3・壹さ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹暴n- **逶ｮ逧・** ```js``` 繧・```python``` 縺ｪ縺ｩ縺ｮ繧ｳ繝ｼ繝芽ｨ俶ｳ輔ｒNotion縺ｮ繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け縺ｨ縺励※螟画鋤縲・ \n- **讖溯・:** 險隱櫁・蜍墓､懷・繝ｻ繝上う繝ｩ繧､繝磯←逕ｨ繝ｻ繝・・繝樣∈謚橸ｼ・ight/Dark・峨・ \n- **蜉ｹ譫・** 謚陦薙Γ繝｢繧・ｻ墓ｧ俶嶌縺ｮ蜀咲樟蠎ｦ蜷台ｸ翫・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ4・哂I謨ｴ蠖｢繧ｪ繝励す繝ｧ繝ｳ\n- **逶ｮ逧・** ChatGPT縺瑚ｦ句・縺玲ｧ矩繝ｻ邂・擅譖ｸ縺阪ｒ閾ｪ蜍墓紛蠖｢縺励※菫晏ｭ倥・ \n- **莉慕ｵ・∩:** ChatGPT蛛ｴ縺ｧ讒区枚隗｣譫・竊・Markdown髫主ｱ､陬懈ｭ｣蠕後↓Notion騾∽ｿ｡縲・ \n- **蜉ｹ譫・** 譖ｸ縺肴淵繧峨＠繝｡繝｢繧り・蜍慕噪縺ｫ謨ｴ縺｣縺溘ラ繧ｭ繝･繝｡繝ｳ繝医∈縲・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ5・壽焚蠑・/ Mermaid / 蝗ｳ蠑丞ｯｾ蠢彌n- **逶ｮ逧・** 謨ｰ蠑擾ｼ・aTeX・峨ｄ蝗ｳ蠑擾ｼ・ermaid・峨ｒ豁｣縺励￥繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ縲・ \n- **謚陦・**\n  - LaTeX 竊・MathBlock螟画鋤\n  - Mermaid 竊・SVG or Image Block逕滓・・・hatGPT縺ｧSVG螟画鋤・・ \n- **蜉ｹ譫・** 謨ｰ逅・枚譖ｸ繝ｻ險ｭ險郁ｳ・侭繝ｻ繝輔Ο繝ｼ繝√Ε繝ｼ繝医・蜀咲樟蜉帙ｒ蠑ｷ蛹悶・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ6・壹ユ繝ｳ繝励Ξ繝ｼ繝磯｣蜍穂ｿ晏ｭ禄n- **逶ｮ逧・** 繧ｫ繝・ざ繝ｪ縺ｫ蠢懊§縺ｦNotion繝・Φ繝励Ξ繝ｼ繝医ｒ閾ｪ蜍暮←逕ｨ縲・ \n- **萓・** category: Tech 竊・謚陦薙Γ繝｢繝・Φ繝励Ξ繝ｼ繝医…ategory: Idea 竊・繧｢繧､繝・い繧ｷ繝ｼ繝医・ \n- **蜉ｹ譫・** 邨ｱ荳繝輔か繝ｼ繝槭ャ繝亥喧繝ｻ讀懃ｴ｢諤ｧ縺ｮ蜷台ｸ翫・n\n---\n\n## 庁 莉雁ｾ後・諡｡蠑ｵ・医い繧､繝・ぅ繧｢繝｡繝｢謇ｱ縺・ｼ噂n\n### 竭ｦ GitHub README蜷梧悄讖溯・\n- Notion竊竪itHub閾ｪ蜍筆arkdown蜷梧悄・・EADME繧・ocs驟堺ｸ区峩譁ｰ・噂n\n### 竭ｧ ChatGPT蜀・otion繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ\n- 菫晏ｭ伜燕縺ｫChatGPT荳翫〒Notion鬚ｨ繝励Ξ繝薙Η繝ｼ繧定｡ｨ遉ｺ\n\n### 竭ｨ 蜿梧婿蜷賎itHub騾｣謳ｺ\n- GitHub譖ｴ譁ｰ繧淡ebhook邨檎罰縺ｧNotion蜿肴丐・亥曙譁ｹ蜷代ラ繧ｭ繝･繝｡繝ｳ繝亥酔譛滂ｼ噂n\n---\n\n## 噫 莉雁屓縺ｮ髢狗匱繧ｴ繝ｼ繝ｫ\n- ChatGPT縺ｮMarkdown蜃ｺ蜉帙ｒNotion繝ｪ繝・メ繝悶Ο繝・け縺ｫ螟画鋤・・hase1・・ \n- Notion竊樽arkdown螟画鋤繧貞ｮ溯｣・ｼ・hase2・・ ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "# ｧ Notion Second Brain 讖溯・謠先｡医・螳溯｣・ｨ育判・・arkdown蟇ｾ蠢懃ｷｨ / 螳悟・迚・2・噂n\n## 識 逶ｮ逧ЫnChatGPT縺ｧ菴懈・縺励◆Markdown蠖｢蠑上・繝弱・繝医ｒ縲・*Notion荳翫〒繝ｪ繝・メ繝・く繧ｹ繝医→縺励※豁｣遒ｺ縺ｫ蜀咲樟菫晏ｭ・*縺ｧ縺阪ｋ繧医≧縺ｫ縺吶ｋ縲・ \n縺薙ｌ縺ｯ縲郡econd Brain縲阪す繧ｹ繝・Β縺ｮ荳ｭ譬ｸ縺ｨ縺ｪ繧区ｩ溯・縺ｧ縺ゅｊ縲｀arkdown讒矩繧堤ｶｭ謖√＠縺溘∪縺ｾ蜿梧婿蜷代↓蜷梧悄繝ｻ邱ｨ髮・庄閭ｽ縺ｪ遏･隴伜渕逶､繧堤岼謖・☆縲・ \n\n---\n\n## 笞呻ｸ・繝輔ぉ繝ｼ繧ｺ蛻･螳溯｣・婿驥拿n### ｧｩ 繝輔ぉ繝ｼ繧ｺ1・哺arkdown 竊・Notion 繝ｪ繝・メ繝悶Ο繝・け螟画鋤\n- **逶ｮ逧・** ChatGPT縺檎函謌舌＠縺櫪arkdown繧誰otion繝悶Ο繝・け讒矩・郁ｦ句・縺励・繝ｪ繧ｹ繝医・繧ｳ繝ｼ繝峨・螟ｪ蟄励↑縺ｩ・峨→縺励※菫晏ｭ倥・ \n- **謚陦・** `@tryfabric/martian` 繧貞茜逕ｨ縺励※ `markdownToBlocks(content)` 繧堤函謌舌・ \n- **譛溷ｾ・柑譫・** 繝励Ξ繝ｼ繝ｳ繝・く繧ｹ繝井ｿ晏ｭ倥ｒ隗｣豸医＠縲¨otion荳翫〒繧りｦ冶ｦ夂噪縺ｫ謨ｴ縺｣縺滓ｧ矩繧貞・迴ｾ縲・ \n- **繧ｳ繝ｼ繝我ｾ・**\n```js\nimport { markdownToBlocks } from \"@tryfabric/martian\";\nconst blocks = markdownToBlocks(content);\nawait notion.pages.create({\n  parent: { database_id: process.env.NOTION_DB_ID },\n  properties,\n  children: blocks\n});\n```\n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ2・壼曙譁ｹ蜷大､画鋤・・otion 竊・Markdown・噂n- **逶ｮ逧・** Notion繝壹・繧ｸ繧樽arkdown蠖｢蠑上〒繧ｨ繧ｯ繧ｹ繝昴・繝亥庄閭ｽ縺ｫ縺吶ｋ縲・ \n- **謚陦・** `blocksToMarkdown()` 繧堤畑縺・※Notion繝悶Ο繝・け繧樽arkdown譁・ｭ怜・縺ｫ螟画鋤縲・ \n- **蜉ｹ譫・** GitHub騾｣謳ｺ繝ｻ繝舌ャ繧ｯ繧｢繝・・繝ｻChatGPT縺ｧ縺ｮ蜀榊茜逕ｨ縺悟ｮｹ譏薙↓縲・ \n- **逋ｺ螻・** Notion荳翫・譖ｴ譁ｰ繧竪itHub Actions邨檎罰縺ｧMarkdown繝輔ぃ繧､繝ｫ縺ｸ蜿肴丐縺吶ｋ縺薙→繧ょ庄閭ｽ縲・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ3・壹さ繝ｼ繝峨ヶ繝ｭ繝・け譛驕ｩ蛹暴n- **逶ｮ逧・** ```js``` 繧・```python``` 縺ｪ縺ｩ縺ｮ繧ｳ繝ｼ繝芽ｨ俶ｳ輔ｒNotion縺ｮ繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け縺ｨ縺励※螟画鋤縲・ \n- **讖溯・:** 險隱櫁・蜍墓､懷・繝ｻ繝上う繝ｩ繧､繝磯←逕ｨ繝ｻ繝・・繝樣∈謚橸ｼ・ight/Dark・峨・ \n- **蜉ｹ譫・** 謚陦薙Γ繝｢繧・ｻ墓ｧ俶嶌縺ｮ蜀咲樟蠎ｦ蜷台ｸ翫・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ4・哂I謨ｴ蠖｢繧ｪ繝励す繝ｧ繝ｳ\n- **逶ｮ逧・** ChatGPT縺瑚ｦ句・縺玲ｧ矩繝ｻ邂・擅譖ｸ縺阪ｒ閾ｪ蜍墓紛蠖｢縺励※菫晏ｭ倥・ \n- **莉慕ｵ・∩:** ChatGPT蛛ｴ縺ｧ讒区枚隗｣譫・竊・Markdown髫主ｱ､陬懈ｭ｣蠕後↓Notion騾∽ｿ｡縲・ \n- **蜉ｹ譫・** 譖ｸ縺肴淵繧峨＠繝｡繝｢繧り・蜍慕噪縺ｫ謨ｴ縺｣縺溘ラ繧ｭ繝･繝｡繝ｳ繝医∈縲・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ5・壽焚蠑・/ Mermaid / 蝗ｳ蠑丞ｯｾ蠢彌n- **逶ｮ逧・** 謨ｰ蠑擾ｼ・aTeX・峨ｄ蝗ｳ蠑擾ｼ・ermaid・峨ｒ豁｣縺励￥繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ縲・ \n- **謚陦・**\n  - LaTeX 竊・MathBlock螟画鋤\n  - Mermaid 竊・SVG or Image Block逕滓・・・hatGPT縺ｧSVG螟画鋤・・ \n- **蜉ｹ譫・** 謨ｰ逅・枚譖ｸ繝ｻ險ｭ險郁ｳ・侭繝ｻ繝輔Ο繝ｼ繝√Ε繝ｼ繝医・蜀咲樟蜉帙ｒ蠑ｷ蛹悶・n\n---\n\n### ｧｩ 繝輔ぉ繝ｼ繧ｺ6・壹ユ繝ｳ繝励Ξ繝ｼ繝磯｣蜍穂ｿ晏ｭ禄n- **逶ｮ逧・** 繧ｫ繝・ざ繝ｪ縺ｫ蠢懊§縺ｦNotion繝・Φ繝励Ξ繝ｼ繝医ｒ閾ｪ蜍暮←逕ｨ縲・ \n- **萓・** category: Tech 竊・謚陦薙Γ繝｢繝・Φ繝励Ξ繝ｼ繝医…ategory: Idea 竊・繧｢繧､繝・い繧ｷ繝ｼ繝医・ \n- **蜉ｹ譫・** 邨ｱ荳繝輔か繝ｼ繝槭ャ繝亥喧繝ｻ讀懃ｴ｢諤ｧ縺ｮ蜷台ｸ翫・n\n---\n\n## 庁 莉雁ｾ後・諡｡蠑ｵ・医い繧､繝・ぅ繧｢繝｡繝｢謇ｱ縺・ｼ噂n\n### 竭ｦ GitHub README蜷梧悄讖溯・\n- Notion竊竪itHub閾ｪ蜍筆arkdown蜷梧悄・・EADME繧・ocs驟堺ｸ区峩譁ｰ・噂n\n### 竭ｧ ChatGPT蜀・otion繝ｬ繝ｳ繝繝ｪ繝ｳ繧ｰ\n- 菫晏ｭ伜燕縺ｫChatGPT荳翫〒Notion鬚ｨ繝励Ξ繝薙Η繝ｼ繧定｡ｨ遉ｺ\n\n### 竭ｨ 蜿梧婿蜷賎itHub騾｣謳ｺ\n- GitHub譖ｴ譁ｰ繧淡ebhook邨檎罰縺ｧNotion蜿肴丐・亥曙譁ｹ蜷代ラ繧ｭ繝･繝｡繝ｳ繝亥酔譛滂ｼ噂n\n---\n\n## 噫 莉雁屓縺ｮ髢狗匱繧ｴ繝ｼ繝ｫ\n- ChatGPT縺ｮMarkdown蜃ｺ蜉帙ｒNotion繝ｪ繝・メ繝悶Ο繝・け縺ｫ螟画鋤・・hase1・・ \n- Notion竊樽arkdown螟画鋤繧貞ｮ溯｣・ｼ・hase2・・ ",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "2beb6f07-73e2-8141-a08d-f14ca5c41413",
+      "parent": {
+        "type": "page_id",
+        "page_id": "2beb6f07-73e2-81c3-a9de-ca3206a3b41a"
+      },
+      "created_time": "2025-12-03T12:34:00.000Z",
+      "last_edited_time": "2025-12-03T12:34:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "462c00ce-29d0-406d-9505-66280afa4cae"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "- 繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け縺ｮ譛驕ｩ蛹悶・AI謨ｴ蠖｢縺ｮ蝓ｺ遉弱ｒ蟆主・・・hase3縲・・・ \n- GitHub蜷梧悄繝ｻ蜿梧婿蜷鷹｣謳ｺ縺ｯ谺｡繝輔ぉ繝ｼ繧ｺ縺ｧ螳溯｣・ｺ亥ｮ壹・n\n---\n\n## 迫 髢｢騾｣繝峨く繝･繝｡繝ｳ繝・n- [Notion Second Brain 謾ｹ蝟・署譯井ｻ墓ｧ俶嶌・亥ｮ悟・迚茨ｼ云(link_to_spec)\n- [Notion Second Brain 繧｢繧､繝・ぅ繧｢繝｡繝｢髮・ｼ医ヵ繧ｧ繝ｼ繧ｺ3莉･髯搾ｼ云(link_to_ideas)\n- [莉墓ｧ俶嶌繝・・繧ｿ繝吶・繧ｹ](link_to_db)\n\n---\n\n## 捷・・繧ｿ繧ｰ\nNotion, ChatGPT, Markdown, Integration, AI, UX, Documentation",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "- 繧ｳ繝ｼ繝峨ヶ繝ｭ繝・け縺ｮ譛驕ｩ蛹悶・AI謨ｴ蠖｢縺ｮ蝓ｺ遉弱ｒ蟆主・・・hase3縲・・・ \n- GitHub蜷梧悄繝ｻ蜿梧婿蜷鷹｣謳ｺ縺ｯ谺｡繝輔ぉ繝ｼ繧ｺ縺ｧ螳溯｣・ｺ亥ｮ壹・n\n---\n\n## 迫 髢｢騾｣繝峨く繝･繝｡繝ｳ繝・n- [Notion Second Brain 謾ｹ蝟・署譯井ｻ墓ｧ俶嶌・亥ｮ悟・迚茨ｼ云(link_to_spec)\n- [Notion Second Brain 繧｢繧､繝・ぅ繧｢繝｡繝｢髮・ｼ医ヵ繧ｧ繝ｼ繧ｺ3莉･髯搾ｼ云(link_to_ideas)\n- [莉墓ｧ俶嶌繝・・繧ｿ繝吶・繧ｹ](link_to_db)\n\n---\n\n## 捷・・繧ｿ繧ｰ\nNotion, ChatGPT, Markdown, Integration, AI, UX, Documentation",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    }
+  ],
+  "next_cursor": null,
+  "has_more": false,
+  "type": "block",
+  "block": {},
+  "request_id": "ecef6930-279f-4494-b5d2-e7f220d6c7a6"
+}

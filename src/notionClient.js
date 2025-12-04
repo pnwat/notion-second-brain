@@ -3,11 +3,12 @@ const { updateNote } = require('./modules/updateNote');
 const { searchNotes } = require('./modules/searchNotes');
 const { listRecent } = require('./modules/listRecent');
 const { batchUpdate } = require('./modules/batchUpdate');
+const { exportNote } = require('./modules/exportNote');
 const logger = require('./utils/logger');
 
 /**
  * Main dispatcher for Notion operations.
- * @param {string} action - The action to perform (add, update, search).
+ * @param {string} action - The action to perform (add, update, search, list_recent, batch_update, export).
  * @param {object} params - The parameters for the action.
  * @returns {Promise<any>} - The result of the operation.
  */
@@ -25,6 +26,8 @@ async function handleRequest(action, params) {
             return await listRecent(params);
         case 'batch_update':
             return await batchUpdate(params);
+        case 'export':
+            return await exportNote(params);
         default:
             const error = new Error(`Unknown action "${action}"`);
             logger.error(error.message);

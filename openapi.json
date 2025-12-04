@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.2.0"
+        "version": "1.3.0"
     },
     "servers": [
         {
@@ -38,7 +38,8 @@
                                                     "update",
                                                     "search",
                                                     "list_recent",
-                                                    "batch_update"
+                                                    "batch_update",
+                                                    "export"
                                                 ],
                                                 "description": "The action to perform."
                                             },
@@ -90,6 +91,15 @@
                                                 ],
                                                 "description": "Update mode for content. 'append' adds to the bottom, 'replace' overwrites existing content. Default is 'append'.",
                                                 "default": "append"
+                                            },
+                                            "useMarkdown": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "true",
+                                                    "false"
+                                                ],
+                                                "description": "Use Markdown conversion for content. Default is 'true'.",
+                                                "default": "true"
                                             }
                                         },
                                         "required": [

@@ -16,6 +16,7 @@ async function main() {
             query: process.env.QUERY,
             limit: process.env.LIMIT,
             mode: process.env.MODE,
+            useMarkdown: process.env.USE_MARKDOWN !== 'false', // Default true
             updates: process.env.UPDATES ? (() => {
                 try {
                     return JSON.parse(process.env.UPDATES);

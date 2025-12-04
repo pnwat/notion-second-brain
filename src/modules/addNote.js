@@ -1,48 +1,50 @@
 const { notion, databaseId } = require('../notion');
 const { splitText } = require('../utils');
+const { convertMarkdownToBlocks } = require('../utils/markdownConverter');
 const logger = require('../utils/logger');
 
-async function addNote({ title, content, tags = [], category = 'Others' }) {
+async function addNote({ title, content, tags = [], category = 'Others', useMarkdown = true }) {
     try {
-        const chunks = splitText(content);
-        const children = chunks.map(chunk => ({
-            object: 'block',
-            type: 'paragraph',
-            paragraph: {
-                rich_text: [
-                    {
+        let children;
+
+        if (useMarkdown && content) {
+            // Markdown → Notion blocks conversion
+            children = convertMarkdownToBlocks(content);
+        } else if (content) {
+            // Existing plain text processing (backward compatibility)
+            const chunks = splitText(content);
+            children = chunks.map(chunk => ({
+                object: 'block',
+                type: 'paragraph',
+                paragraph: {
+                    rich_text: [{
                         type: 'text',
-                        text: {
-                            content: chunk,
-                        },
-                    },
-                ],
-            },
-        }));
+                        text: { content: chunk }
+                    }]
+                }
+            }));
+        } else {
+            children = [];
+        }
 
         const response = await notion.pages.create({
             parent: { database_id: databaseId },
             properties: {
                 '名前': {
-                    title: [
-                        {
-                            text: {
-                                content: title,
-                            },
-                        },
-                    ],
+                    title: [{
+                        text: { content: title }
+                    }]
                 },
                 'カテゴリ': {
-                    select: {
-                        name: category,
-                    },
+                    select: { name: category }
                 },
                 'タグ': {
-                    multi_select: tags.map((tag) => ({ name: tag })),
-                },
+                    multi_select: tags.map(tag => ({ name: tag }))
+                }
             },
-            children: children,
+            children: children
         });
+
         logger.info(`Successfully added note: ${response.url}`, { title, id: response.id });
         return response.url;
     } catch (error) {

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Action to perform (add, update, search, list_recent, batch_update)'
+        description: 'Action to perform (add, update, search, list_recent, batch_update, export)'
         required: true
         default: 'search'
       title:
@@ -36,6 +36,10 @@ on:
         description: 'Update mode: append or replace'
         required: false
         default: 'append'
+      useMarkdown:
+        description: 'Use Markdown conversion (true/false)'
+        required: false
+        default: 'true'
 
 jobs:
   sync:
@@ -66,4 +70,5 @@ jobs:
           LIMIT: ${{ inputs.limit }}
           UPDATES: ${{ inputs.updates }}
           MODE: ${{ inputs.mode }}
+          USE_MARKDOWN: ${{ inputs.useMarkdown }}
         run: node src/index.js
