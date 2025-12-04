@@ -8,9 +8,17 @@ const logger = require('../utils/logger');
  */
 async function enrichBookMetadata(pageId, title) {
     try {
-        logger.info(`Fetching metadata for book: ${title}`);
+        // Clean the title by removing common note-taking suffixes
+        let cleanTitle = title
+            .replace(/\s*(読書)?メモ\s*$/, '')
+            .replace(/\s*の?読書ノート\s*$/, '')
+            .replace(/\s*Book\s*Note\s*$/i, '')
+            .replace(/\s*Reading\s*Note\s*$/i, '')
+            .trim();
 
-        const query = encodeURIComponent(title);
+        logger.info(`Fetching metadata for book: ${cleanTitle}${cleanTitle !== title ? ` (original: ${title})` : ''}`);
+
+        const query = encodeURIComponent(cleanTitle);
         const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 
         if (!response.ok) {
@@ -20,7 +28,7 @@ async function enrichBookMetadata(pageId, title) {
         const data = await response.json();
 
         if (!data.items || !data.items.length) {
-            logger.warn(`No book found for title: ${title}`);
+            logger.warn(`No book found for title: ${cleanTitle}`);
             return;
         }
 
