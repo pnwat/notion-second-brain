@@ -153,47 +153,24 @@
                                                                                                 "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
                                                                                             },
                                                                                             "updates": {
-                                                                                                "type": "string",
-                                                                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
-                                                                                            },
-                                                                                            "mode": {
-                                                                                                "type": "string",
-                                                                                                "enum": [
-                                                                                                    "append",
-                                                                                                    "replace"
-                                                                                                ],
-                                                                                                "description": "Update mode for content. 'append' adds to the bottom, 'replace' overwrites existing content. Default is 'append'.",
-                                                                                                "default": "append"
-                                                                                            },
-                                                                                            "replaceContent": {
-                                                                                                "type": "string",
-                                                                                                "enum": [
-                                                                                                    "true",
-                                                                                                    "false"
-                                                                                                ],
-                                                                                                "default": "false",
-                                                                                                "description": "Deprecated. Use mode='replace' instead. If true, replaces existing content."
-                                                                                            }
-                                                                                        },
-                                                                                        "required": [
-                                                                                            "action"
-                                                                                        ]
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "ref",
-                                                                                    "inputs"
-                                                                                ]
+                                                                                                "action"
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "ref",
+                                                                                        "inputs"
+                                                                                    ]
+                                                                                }
                                                                             }
                                                                         }
-                                                                    }
-                                                                },
-                                                                "responses": {
-                                                                    "204": {
-                                                                        "description": "Workflow triggered successfully"
+                                                                    },
+                                                                    "responses": {
+                                                                        "204": {
+                                                                            "description": "Workflow triggered successfully"
+                                                                        }
                                                                     }
                                                                 }
                                                             }
                                                         }
                                                     }
-                                                }

@@ -25,42 +25,6 @@ on:
       query:
         description: 'Search query (for search)'
         required: false
-      replaceContent:
-        description: 'Replace existing content instead of appending (for update)'
-        required: false
-        default: 'false'
-      limit:
-name: Sync to Notion
-
-on:
-  workflow_dispatch:
-    inputs:
-      action:
-        description: 'Action to perform (add, update, search, list_recent, batch_update)'
-        required: true
-        default: 'search'
-      title:
-        description: 'Title of the note (for add/update)'
-        required: false
-      content:
-        description: 'Content of the note (for add/update)'
-        required: false
-      category:
-        description: 'Category of the note (for add/update)'
-        required: false
-      tags:
-        description: 'Tags (comma separated) (for add/update)'
-        required: false
-      pageId:
-        description: 'Page ID (for update)'
-        required: false
-      query:
-        description: 'Search query (for search)'
-        required: false
-      replaceContent:
-        description: 'Replace existing content instead of appending (for update)'
-        required: false
-        default: 'false'
       limit:
         description: 'Number of notes to return (for list_recent)'
         required: false
@@ -72,9 +36,6 @@ on:
         description: 'Update mode: append or replace'
         required: false
         default: 'append'
-      payload:
-        description: 'JSON Payload (Deprecated, use individual inputs)'
-        required: false
 
 jobs:
   sync:
@@ -102,9 +63,7 @@ jobs:
           TAGS: ${{ inputs.tags }}
           PAGE_ID: ${{ inputs.pageId }}
           QUERY: ${{ inputs.query }}
-          REPLACE_CONTENT: ${{ inputs.replaceContent }}
           LIMIT: ${{ inputs.limit }}
           UPDATES: ${{ inputs.updates }}
           MODE: ${{ inputs.mode }}
-          PAYLOAD: ${{ inputs.payload }}
         run: node src/index.js
