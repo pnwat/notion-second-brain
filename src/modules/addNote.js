@@ -26,8 +26,10 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
         }
 
         // Apply template if specified
-        if (template) {
-            const templateContent = await applyTemplate(template, { title });
+        // For Book category, always apply AI content filtering
+        if (template && template !== 'book_note') {
+            // Non-book templates: apply normally
+            const templateContent = await applyTemplate(template, { title: cleanTitle });
             if (templateContent) {
                 if (finalContent) {
                     finalContent = templateContent + '\n\n' + finalContent;
@@ -38,7 +40,7 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
             } else {
                 logger.warn(`Template not found: ${template}`);
             }
-        } else if (category === 'Book' || category === '読書') {
+        } else if (category === 'Book' || category === '読書' || template === 'book_note') {
             // For book notes, apply template and optionally append user content
             const templateContent = await applyTemplate('book_note', { title });
             if (templateContent) {
