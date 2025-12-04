@@ -90,6 +90,14 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
             children = [];
         }
 
+        // Log database info for diagnostics
+        try {
+            const dbInfo = await notion.databases.retrieve({ database_id: databaseId });
+            logger.info(`Target database: ${dbInfo.title[0]?.plain_text || 'Untitled'} (${dbInfo.url})`);
+        } catch (error) {
+            logger.warn(`Could not retrieve database info: ${error.message}`);
+        }
+
         const response = await notion.pages.create({
             parent: { database_id: databaseId },
             properties: {
