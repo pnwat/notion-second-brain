@@ -83,20 +83,6 @@
                                                 "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
                                             },
                                             "replaceContent": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "true",
-                                                    "false"
-                                                ],
-                                                "default": "false",
-                                                "description": "Replace content instead of appending (for update action)."
-                                            }
-                                        },
-                                        "required": [
-                                            "action"
-                                        ]
-                                    }
-                                },
                                 "required": [
                                     "ref",
                                     "inputs"
