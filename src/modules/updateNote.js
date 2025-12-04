@@ -16,7 +16,8 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
         // If pageId is not provided (or invalid) but title is, search for the page by title
         if (!targetPageId && title) {
             const { searchNotes } = require('./searchNotes');
-            const results = await searchNotes({ query: title });
+            const searchResponse = await searchNotes({ query: title });
+            const results = searchResponse.results;
 
             if (results.length === 0) {
                 throw new Error(`No page found with title: ${title}`);
