@@ -89,36 +89,21 @@
                                             },
                                             "mode": {
                                                 "type": "string",
-                                                "enum": [
-                                                    "append",
-                                                    "replace"
-                                                ],
-                                                "description": "Update mode: 'append' to add content, 'replace' to overwrite."
                                             },
-                                            "section": {
-                                                "type": "string",
-                                                "description": "Target section name (e.g. '感想', 'メモ') to append content to. Requires the section to be a Heading (preferably Toggle Heading) in the note."
-                                            }
-                                        },
-                                        "required": [
-                                            "action"
-                                        ]
+                                            "required": [
+                                                "ref",
+                                                "inputs"
+                                            ]
+                                        }
                                     }
-                                },
-                                "required": [
-                                    "ref",
-                                    "inputs"
-                                ]
+                                }
+                            },
+                            "responses": {
+                                "204": {
+                                    "description": "Workflow triggered successfully"
+                                }
                             }
                         }
                     }
-                },
-                "responses": {
-                    "204": {
-                        "description": "Workflow triggered successfully"
-                    }
                 }
             }
-        }
-    }
-}
