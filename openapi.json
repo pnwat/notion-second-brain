@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.6.3"
+        "version": "1.7.0"
     },
     "servers": [
         {
@@ -53,11 +53,11 @@
                                             },
                                             "title": {
                                                 "type": "string",
-                                                "description": "Title of the note. For Book/読書 category, use ONLY the book title without any suffixes like '読書メモ', 'メモ', or 'の読書ノート'."
+                                                "description": "Title of the note. For Book category, use ONLY the book title."
                                             },
                                             "content": {
                                                 "type": "string",
-                                                "description": "IMPORTANT: For Book/読書 category, leave this EMPTY or only include user-provided text. DO NOT generate summaries, overviews, or any AI-generated content. The template will be automatically applied. For other categories, this is the content of the note."
+                                                "description": "Content of the note. For Book category, leave EMPTY."
                                             },
                                             "category": {
                                                 "type": "string",
@@ -68,18 +68,29 @@
                                                     "Life",
                                                     "Business",
                                                     "Others",
-                                                    "Book",
-                                                    "読書"
+                                                    "Book"
                                                 ],
-                                                "description": "Category of the note (for add/update actions)."
+                                                "description": "Category of the note."
                                             },
                                             "tags": {
                                                 "type": "string",
-                                                "description": "Comma-separated tags (for add/update actions)."
+                                                "description": "Comma-separated tags."
+                                            },
+                                            "mode": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "append",
+                                                    "replace"
+                                                ],
+                                                "description": "Update mode for content."
+                                            },
+                                            "section": {
+                                                "type": "string",
+                                                "description": "Target section name for update action."
                                             },
                                             "template": {
                                                 "type": "string",
-                                                "description": "Template name to use when creating a note (for add action)."
+                                                "description": "Template name to use."
                                             },
                                             "subAction": {
                                                 "type": "string",
@@ -88,23 +99,11 @@
                                                     "get",
                                                     "save"
                                                 ],
-                                                "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
+                                                "description": "Sub-action for manage_template."
                                             },
                                             "name": {
                                                 "type": "string",
-                                                "description": "Template name (for manage_template get/save actions)."
-                                            },
-                                            "mode": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "append",
-                                                    "replace"
-                                                ],
-                                                "description": "Update mode: 'append' to add content, 'replace' to overwrite. Used with update action."
-                                            },
-                                            "section": {
-                                                "type": "string",
-                                                "description": "Target section name (e.g. '感想', 'クリップ') to append content to. Used with update action. Requires the section to be a toggle heading in the note."
+                                                "description": "Template name for manage_template."
                                             }
                                         }
                                     }
