@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.6.0"
+        "version": "1.6.1"
     },
     "servers": [
         {
@@ -42,54 +42,71 @@
                                                     "export",
                                                     "manage_template"
                                                 ],
-                                                "Finance",
-                                                "Life",
-                                                "Business",
-                                                "Others"
-                                            ],
-                                            "description": "Category of the note (for add/update actions)."
+                                                "description": "The action to perform."
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "description": "Title of the note (for add/update actions)."
+                                            },
+                                            "content": {
+                                                "type": "string",
+                                                "description": "IMPORTANT: For Book/読書 category, leave this EMPTY or only include user-provided text. DO NOT generate summaries, overviews, or any AI-generated content. The template will be automatically applied. For other categories, this is the content of the note."
+                                            },
+                                            "category": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Tech",
+                                                    "Travel",
+                                                    "Finance",
+                                                    "Life",
+                                                    "Business",
+                                                    "Others",
+                                                    "Book",
+                                                    "読書"
+                                                ],
+                                                "description": "Category of the note (for add/update actions)."
+                                            },
+                                            "tags": {
+                                                "type": "string",
+                                                "description": "Comma-separated tags (for add/update actions)."
+                                            },
+                                            "template": {
+                                                "type": "string",
+                                                "description": "Template name to use when creating a note (for add action)."
+                                            },
+                                            "subAction": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "list",
+                                                    "get",
+                                                    "save"
+                                                ],
+                                                "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Template name (for manage_template get/save actions)."
+                                            }
                                         },
-                                        "tags": {
-                                            "type": "string",
-                                            "description": "Comma-separated tags (for add/update actions)."
-                                        },
-                                        "template": {
-                                            "type": "string",
-                                            "description": "Template name to use when creating a note (for add action)."
-                                        },
-                                        "subAction": {
-                                            "type": "string",
-                                            "enum": [
-                                                "list",
-                                                "get",
-                                                "save"
-                                            ],
-                                            "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
-                                        },
-                                        "name": {
-                                            "type": "string",
-                                            "description": "Template name (for manage_template get/save actions)."
-                                        }
-                                    },
-                                    "required": [
-                                        "action"
-                                    ]
-                                }
-                            },
-                            "required": [
-                                "ref",
-                                "inputs"
-                            ]
+                                        "required": [
+                                            "action"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "ref",
+                                    "inputs"
+                                ]
+                            }
                         }
                     }
-                }
-            },
-            "responses": {
-                "204": {
-                    "description": "Workflow triggered successfully"
+                },
+                "responses": {
+                    "204": {
+                        "description": "Workflow triggered successfully"
+                    }
                 }
             }
         }
     }
-}
 }
