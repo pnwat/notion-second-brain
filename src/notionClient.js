@@ -4,6 +4,7 @@ const { searchNotes } = require('./modules/searchNotes');
 const { listRecent } = require('./modules/listRecent');
 const { batchUpdate } = require('./modules/batchUpdate');
 const { exportNote } = require('./modules/exportNote');
+const manageTemplate = require('./modules/manageTemplate');
 const logger = require('./utils/logger');
 
 /**
@@ -28,6 +29,8 @@ async function handleRequest(action, params) {
             return await batchUpdate(params);
         case 'export':
             return await exportNote(params);
+        case 'manage_template':
+            return await manageTemplate(params);
         default:
             const error = new Error(`Unknown action "${action}"`);
             logger.error(error.message);
