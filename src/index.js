@@ -9,6 +9,28 @@ async function main() {
         payload = {
             action: process.env.ACTION,
             title: process.env.TITLE,
+            content: process.env.CONTENT,
+            category: process.env.CATEGORY,
+            tags: process.env.TAGS ? process.env.TAGS.split(',') : undefined,
+            pageId: process.env.PAGE_ID,
+            query: process.env.QUERY,
+            limit: process.env.LIMIT,
+            replaceContent: process.env.REPLACE_CONTENT === 'true',
+            mode: process.env.MODE, // Add mode parameter
+            updates: process.env.UPDATES ? (() => {
+                try {
+                    return JSON.parse(process.env.UPDATES);
+                } catch (error) {
+                    logger.error('Failed to parse UPDATES JSON', { error: error.message, updates: process.env.UPDATES });
+                    throw new Error(`Invalid UPDATES JSON: ${error.message}`);
+                }
+            })() : undefined,
+        };
+    }
+    // 2. Fallback to PAYLOAD JSON string (for backward compatibility or local dev)
+    else if (process.env.PAYLOAD) {
+        try {
+            payload = JSON.parse(process.env.PAYLOAD);
         } catch (error) {
             logger.error('Error: Invalid JSON in PAYLOAD.');
             process.exit(1);
