@@ -77,21 +77,48 @@
                                             "subAction": {
                                                 "type": "string",
                                                 "enum": [
+                                                    "list",
+                                                    "get",
+                                                    "save"
+                                                ],
+                                                "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
                                             },
-                                            "required": [
-                                                "ref",
-                                                "inputs"
-                                            ]
-                                        }
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Template name (for manage_template get/save actions)."
+                                            },
+                                            "mode": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "append",
+                                                    "replace"
+                                                ],
+                                                "description": "Update mode: 'append' to add content, 'replace' to overwrite."
+                                            },
+                                            "section": {
+                                                "type": "string",
+                                                "description": "Target section name (e.g. '感想', 'メモ') to append content to. Requires the section to be a Heading (preferably Toggle Heading) in the note."
+                                            }
+                                        },
+                                        "required": [
+                                            "action"
+                                        ]
                                     }
-                                }
-                            },
-                            "responses": {
-                                "204": {
-                                    "description": "Workflow triggered successfully"
-                                }
+                                },
+                                "required": [
+                                    "ref",
+                                    "inputs"
+                                ]
                             }
                         }
                     }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Workflow triggered successfully"
+                    }
                 }
             }
+        }
+    }
+}
