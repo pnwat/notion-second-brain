@@ -58,8 +58,20 @@ async function enrichBookMetadata(pageId, title) {
             // Prefer ISBN_13, fallback to first available
             const isbn = info.industryIdentifiers.find(id => id.type === 'ISBN_13') || info.industryIdentifiers[0];
             properties['ISBN'] = createRichText(isbn.identifier);
+        }
+
+        if (info.pageCount) {
+            properties['ページ数'] = { number: info.pageCount };
+        }
+
+        if (Object.keys(properties).length === 0) {
+            logger.info('No relevant metadata found to update.');
+            return;
+        }
+
+        await notion.pages.update({
             page_id: pageId,
-                properties: properties
+            properties: properties
         });
 
         logger.info('Successfully updated book metadata.');
