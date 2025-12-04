@@ -11,35 +11,14 @@ async function batchUpdate({ updates }) {
     if (!Array.isArray(updates) || updates.length === 0) {
         throw new Error('No updates provided for batch operation.');
     }
-
-    logger.info(`Starting batch update for ${updates.length} notes.`);
-
-    const results = [];
-    for (const update of updates) {
-        try {
-            logger.info(`Processing update for pageId: ${update.pageId || 'unknown'} / title: ${update.title || 'unknown'}`);
-            const url = await updateNote(update);
-            results.push({
-                id: update.pageId,
-                title: update.title,
-                status: 'success',
-                url: url,
-            });
-        } catch (error) {
-            logger.error(`Failed to update note: ${update.pageId || update.title}`, { error: error.message });
-            results.push({
-                id: update.pageId,
-                title: update.title,
-                status: 'error',
-                error: error.message,
-            });
+});
         }
     }
 
-    const successCount = results.filter(r => r.status === 'success').length;
-    logger.info(`Batch update completed. Success: ${successCount}, Failed: ${results.length - successCount}`);
+const successCount = results.filter(r => r.status === 'success').length;
+logger.info(`Batch update completed. Success: ${successCount}, Failed: ${results.length - successCount}`);
 
-    return results;
+return results;
 }
 
 module.exports = { batchUpdate };
