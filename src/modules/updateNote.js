@@ -89,100 +89,65 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
             let targetBlockId = targetPageId;
 
             // If section is specified, try to find the target block (toggle heading)
-            if (section) {
-                logger.info(`Looking for section: "${section}"`);
-                const pageBlocks = await notion.blocks.children.list({
-                    block_id: targetPageId,
-                });
-
-                const sectionBlock = pageBlocks.results.find(block => {
-                    const type = block.type;
-                    if (['heading_1', 'heading_2', 'heading_3'].includes(type)) {
-                        const text = block[type].rich_text.map(t => t.plain_text).join('');
-                        return text.includes(section);
-                    }
-                    return false;
-                });
-
-                if (sectionBlock) {
-                    logger.info(`Found section block: ${sectionBlock.id} (${sectionBlock.type})`);
-                    targetBlockId = sectionBlock.id;
-                    // If it's a replace mode within a section, we might want to clear the section first?
-                    // For now, let's assume 'append' behavior for sections unless 'replace' is explicitly requested for the section.
-                    // But the current 'replace' logic clears the WHOLE page.
-                    // If section is specified, 'replace' should probably only clear the section.
-
-                    if (updateMode === 'replace') {
-                        logger.info(`Clearing existing content in section "${section}"...`);
-                        const sectionChildren = await notion.blocks.children.list({ block_id: targetBlockId });
-                        for (const child of sectionChildren.results) {
-                            await notion.blocks.delete({ block_id: child.id });
-                        }
-                    }
-                } else {
-                    logger.warn(`Section "${section}" not found. Appending to end of page.`);
-                }
-            } else if (updateMode === 'replace') {
-                // Replace mode for whole page: delete all existing blocks first
-                logger.info('Clearing existing content for replace mode...');
-                const existingBlocks = await notion.blocks.children.list({
-                    block_id: targetPageId,
-                });
-
-                // Delete all existing blocks
-                for (const block of existingBlocks.results) {
-                    await notion.blocks.delete({ block_id: block.id });
-                }
-            } else if (updateMode !== 'append') {
-                logger.warn(`Unknown mode "${updateMode}", falling back to "append".`);
-            }
-
-            // Prepare new content blocks
-            let newBlocks;
-            if (useMarkdown) {
-                // Auto-format if enabled
-                let processedContent = content;
-                if (autoFormat) {
-                    processedContent = await formatMarkdown(content);
-                    if (processedContent !== content) {
-                        logger.info('Applied auto-formatting to content');
-                    }
-                }
-                newBlocks = convertMarkdownToBlocks(processedContent);
-            } else {
-                // Existing plain text processing
-                const chunks = splitText(content);
-                newBlocks = chunks.map(chunk => ({
-                    object: 'block',
-                    type: 'paragraph',
-                    paragraph: {
-                        rich_text: [
-                            {
-                                type: 'text',
-                                text: {
-                                    content: chunk,
-                                },
-                            },
-                        ],
-                    },
-                }));
-            }
-
-            // Execute Append
-            await notion.blocks.children.append({
-                block_id: targetBlockId,
-                children: newBlocks,
+            logger.info('Clearing existing content for replace mode...');
+            const existingBlocks = await notion.blocks.children.list({
+                block_id: targetPageId,
             });
 
-            logger.info(`Successfully updated content (mode: ${updateMode}, section: ${section || 'none'})`);
+            // Delete all existing blocks
+            for (const block of existingBlocks.results) {
+                await notion.blocks.delete({ block_id: block.id });
+            }
+        } else if (updateMode !== 'append') {
+            logger.warn(`Unknown mode "${updateMode}", falling back to "append".`);
         }
 
-        logger.info(`Successfully updated note: ${response.url}`, { url: response.url });
-        return response.url;
-    } catch (error) {
-        logger.error('Error updating note', { error: error.message });
-        throw error;
+        // Prepare new content blocks
+        let newBlocks;
+        if (useMarkdown) {
+            // Auto-format if enabled
+            let processedContent = content;
+            if (autoFormat) {
+                processedContent = await formatMarkdown(content);
+                if (processedContent !== content) {
+                    logger.info('Applied auto-formatting to content');
+                }
+            }
+            newBlocks = convertMarkdownToBlocks(processedContent);
+        } else {
+            // Existing plain text processing
+            const chunks = splitText(content);
+            newBlocks = chunks.map(chunk => ({
+                object: 'block',
+                type: 'paragraph',
+                paragraph: {
+                    rich_text: [
+                        {
+                            type: 'text',
+                            text: {
+                                content: chunk,
+                            },
+                        },
+                    ],
+                },
+            }));
+        }
+
+        // Execute Append
+        await notion.blocks.children.append({
+            block_id: targetBlockId,
+            children: newBlocks,
+        });
+
+        logger.info(`Successfully updated content (mode: ${updateMode}, section: ${section || 'none'})`);
     }
+
+        logger.info(`Successfully updated note: ${response.url}`, { url: response.url });
+    return response.url;
+} catch (error) {
+    logger.error('Error updating note', { error: error.message });
+    throw error;
+}
 }
 
 module.exports = { updateNote };
