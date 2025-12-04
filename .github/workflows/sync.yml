@@ -34,6 +34,7 @@ on:
       section:
         description: 'Section to append to (for update)'
         required: false
+        default: ''
 
 jobs:
   sync:
