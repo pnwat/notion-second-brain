@@ -46,7 +46,7 @@ async function main() {
                 stack: process.env.DEBUG ? error.stack : undefined
             }
         };
-        console.error(JSON.stringify(errorResponse, null, 2));
+        console.log(JSON.stringify(errorResponse, null, 2));
         // Exit with 0 so GitHub Actions doesn't fail, but include error in response
         process.exit(0);
     }
