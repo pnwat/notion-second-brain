@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.5.1"
+        "version": "1.6.0"
     },
     "servers": [
         {
@@ -44,27 +44,46 @@
                                                 ],
                                                 "description": "The action to perform."
                                             },
-                                            "payload": {
+                                            "title": {
                                                 "type": "string",
-                                                "description": "IMPORTANT: This must be a JSON string (not a plain object). Stringify the parameters object before sending.\n\nExamples:\n- For 'add': \"{\\\"title\\\":\\\"My Note\\\",\\\"content\\\":\\\"Note content\\\",\\\"category\\\":\\\"Tech\\\"}\"\n- For 'manage_template' save: \"{\\\"subAction\\\":\\\"save\\\",\\\"name\\\":\\\"daily\\\",\\\"content\\\":\\\"# Template {{date}}\\\"}\"\n- For 'manage_template' list: \"{\\\"subAction\\\":\\\"list\\\"}\"\n- For 'search': \"{\\\"query\\\":\\\"keyword\\\",\\\"limit\\\":\\\"10\\\"}\"\n\nAvailable parameters:\n- title, content, category, tags (for add/update)\n- template (for add, to use a template)\n- pageId, mode (for update)\n- query, limit (for search/list_recent)\n- subAction, name, content (for manage_template)\n- updates (for batch_update)"
+                                                "description": "Title of the note (for add/update actions)."
                                             },
-                                            "useMarkdown": {
+                                            "content": {
+                                                "type": "string",
+                                                "description": "Content of the note (for add/update actions) or template content (for manage_template save action)."
+                                            },
+                                            "category": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "true",
-                                                    "false"
+                                                    "Tech",
+                                                    "Travel",
+                                                    "Finance",
+                                                    "Life",
+                                                    "Business",
+                                                    "Others"
                                                 ],
-                                                "description": "Use Markdown conversion for content. Default is 'true'.",
-                                                "default": "true"
+                                                "description": "Category of the note (for add/update actions)."
                                             },
-                                            "autoFormat": {
+                                            "tags": {
+                                                "type": "string",
+                                                "description": "Comma-separated tags (for add/update actions)."
+                                            },
+                                            "template": {
+                                                "type": "string",
+                                                "description": "Template name to use when creating a note (for add action)."
+                                            },
+                                            "subAction": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "true",
-                                                    "false"
+                                                    "list",
+                                                    "get",
+                                                    "save"
                                                 ],
-                                                "description": "Auto-format Markdown content for better structure. Default is 'true'.",
-                                                "default": "true"
+                                                "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Template name (for manage_template get/save actions)."
                                             }
                                         },
                                         "required": [
