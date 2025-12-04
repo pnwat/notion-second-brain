@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.6.1"
+        "version": "1.6.2"
     },
     "servers": [
         {
@@ -46,7 +46,7 @@
                                             },
                                             "title": {
                                                 "type": "string",
-                                                "description": "Title of the note (for add/update actions)."
+                                                "description": "Title of the note. For Book/読書 category, use ONLY the book title without any suffixes like '読書メモ', 'メモ', or 'の読書ノート'."
                                             },
                                             "content": {
                                                 "type": "string",

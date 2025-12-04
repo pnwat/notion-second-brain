@@ -11,6 +11,20 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
         let children;
         let finalContent = content || '';
 
+        // Clean title for book notes (remove common suffixes)
+        let cleanTitle = title;
+        if (category === 'Book' || category === '読書') {
+            cleanTitle = title
+                .replace(/\s*(読書)?メモ\s*$/, '')
+                .replace(/\s*の?読書ノート\s*$/, '')
+                .replace(/\s*Book\s*Note\s*$/i, '')
+                .replace(/\s*Reading\s*Note\s*$/i, '')
+                .trim();
+            if (cleanTitle !== title) {
+                logger.info(`Cleaned title: "${title}" -> "${cleanTitle}"`);
+            }
+        }
+
         // Apply template if specified
         if (template) {
             const templateContent = await applyTemplate(template, { title });
@@ -81,7 +95,7 @@ async function addNote({ title, content, tags = [], category = 'Others', useMark
             properties: {
                 '名前': {
                     title: [{
-                        text: { content: title }
+                        text: { content: category === 'Book' || category === '読書' ? cleanTitle : title }
                     }]
                 },
                 'カテゴリ': {
