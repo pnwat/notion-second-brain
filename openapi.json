@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.7.0"
+        "version": "1.6.3"
     },
     "servers": [
         {
@@ -46,11 +46,11 @@
                                             },
                                             "title": {
                                                 "type": "string",
-                                                "description": "Title of the note."
+                                                "description": "Title of the note. For Book/読書 category, use ONLY the book title without any suffixes like '読書メモ', 'メモ', or 'の読書ノート'."
                                             },
                                             "content": {
                                                 "type": "string",
-                                                "description": "Content of the note."
+                                                "description": "IMPORTANT: For Book/読書 category, leave this EMPTY or only include user-provided text. DO NOT generate summaries, overviews, or any AI-generated content. The template will be automatically applied. For other categories, this is the content of the note."
                                             },
                                             "category": {
                                                 "type": "string",
@@ -64,58 +64,15 @@
                                                     "Book",
                                                     "読書"
                                                 ],
-                                                "description": "Category of the note."
+                                                "description": "Category of the note (for add/update actions)."
                                             },
                                             "tags": {
                                                 "type": "string",
-                                                "description": "Comma-separated tags."
-                                            },
-                                            "pageId": {
-                                                "type": "string",
-                                                "description": "Page ID of the note (for update action)."
-                                            },
-                                            "query": {
-                                                "type": "string",
-                                                "description": "Search query (for search action)."
-                                            },
-                                            "limit": {
-                                                "type": "string",
-                                                "description": "Maximum number of results to return. Use with 'search' or 'list_recent' actions. Example: '3', '5', or '10'."
-                                            },
-                                            "updates": {
-                                                "type": "string",
-                                                "description": "JSON array of updates for batch_update action. Example: [{\"pageId\":\"xxx\",\"category\":\"Tech\"},{\"pageId\":\"yyy\",\"tags\":\"tag1,tag2\"}]"
-                                            },
-                                            "mode": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "append",
-                                                    "replace"
-                                                ],
-                                                "description": "Update mode for content. 'append' adds to the bottom, 'replace' overwrites existing content. Default is 'append'.",
-                                                "default": "append"
-                                            },
-                                            "useMarkdown": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "true",
-                                                    "false"
-                                                ],
-                                                "description": "Use Markdown conversion for content. Default is 'true'.",
-                                                "default": "true"
-                                            },
-                                            "autoFormat": {
-                                                "type": "string",
-                                                "enum": [
-                                                    "true",
-                                                    "false"
-                                                ],
-                                                "description": "Auto-format Markdown content for better structure. Default is 'true'.",
-                                                "default": "true"
+                                                "description": "Comma-separated tags (for add/update actions)."
                                             },
                                             "template": {
                                                 "type": "string",
-                                                "description": "Template name to use for creating a note (e.g. 'daily')."
+                                                "description": "Template name to use when creating a note (for add action)."
                                             },
                                             "subAction": {
                                                 "type": "string",
@@ -124,15 +81,23 @@
                                                     "get",
                                                     "save"
                                                 ],
-                                                "description": "Sub-action for manage_template."
+                                                "description": "Sub-action for manage_template: 'list' to list templates, 'get' to retrieve a template, 'save' to save a template."
                                             },
                                             "name": {
                                                 "type": "string",
-                                                "description": "Template name for manage_template (get/save)."
+                                                "description": "Template name (for manage_template get/save actions)."
+                                            },
+                                            "mode": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "append",
+                                                    "replace"
+                                                ],
+                                                "description": "Update mode: 'append' to add content, 'replace' to overwrite."
                                             },
                                             "section": {
                                                 "type": "string",
-                                                "description": "Target section name (e.g. 'クリップ', '感想') to append content to. Used with update action."
+                                                "description": "Target section name (e.g. 'クリップ', '感想') to append content to."
                                             }
                                         },
                                         "required": [
