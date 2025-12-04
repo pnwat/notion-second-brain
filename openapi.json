@@ -3,7 +3,7 @@
     "info": {
         "title": "Notion Second Brain Sync",
         "description": "Sync notes to Notion via GitHub Actions.",
-        "version": "1.5.0"
+        "version": "1.5.1"
     },
     "servers": [
         {
@@ -46,7 +46,7 @@
                                             },
                                             "payload": {
                                                 "type": "string",
-                                                "description": "JSON string containing action-specific parameters. \n\nFor 'add': { \"title\": \"...\", \"content\": \"...\", \"category\": \"...\", \"tags\": \"tag1,tag2\", \"template\": \"...\" }\nFor 'update': { \"pageId\": \"...\", \"title\": \"...\", \"content\": \"...\", \"mode\": \"append|replace\" }\nFor 'search': { \"query\": \"...\", \"limit\": \"10\" }\nFor 'list_recent': { \"limit\": \"10\" }\nFor 'batch_update': { \"updates\": [...] }\nFor 'manage_template': { \"subAction\": \"list|get|save\", \"name\": \"...\", \"content\": \"...\" }"
+                                                "description": "IMPORTANT: This must be a JSON string (not a plain object). Stringify the parameters object before sending.\n\nExamples:\n- For 'add': \"{\\\"title\\\":\\\"My Note\\\",\\\"content\\\":\\\"Note content\\\",\\\"category\\\":\\\"Tech\\\"}\"\n- For 'manage_template' save: \"{\\\"subAction\\\":\\\"save\\\",\\\"name\\\":\\\"daily\\\",\\\"content\\\":\\\"# Template {{date}}\\\"}\"\n- For 'manage_template' list: \"{\\\"subAction\\\":\\\"list\\\"}\"\n- For 'search': \"{\\\"query\\\":\\\"keyword\\\",\\\"limit\\\":\\\"10\\\"}\"\n\nAvailable parameters:\n- title, content, category, tags (for add/update)\n- template (for add, to use a template)\n- pageId, mode (for update)\n- query, limit (for search/list_recent)\n- subAction, name, content (for manage_template)\n- updates (for batch_update)"
                                             },
                                             "useMarkdown": {
                                                 "type": "string",
