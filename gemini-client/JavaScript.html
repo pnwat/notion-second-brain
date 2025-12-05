@@ -1,0 +1,112 @@
+<script>
+    const chatContainer = document.getElementById('chat-container');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    let history = []; // Store conversation history
+
+    // Auto-resize textarea
+    userInput.addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+        sendBtn.disabled = this.value.trim() === '';
+    });
+
+    // Send on Enter (Shift+Enter for new line)
+    userInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            if (!sendBtn.disabled) {
+                sendMessage();
+            }
+        }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+
+    function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text) return;
+
+        // Add user message
+        addMessage(text, 'user');
+        userInput.value = '';
+        userInput.style.height = 'auto';
+        sendBtn.disabled = true;
+
+        // Show loading
+        const loadingId = addLoading();
+
+        // Call server
+        google.script.run
+            .withSuccessHandler(function (response) {
+                removeLoading(loadingId);
+                addMessage(response, 'model');
+
+                // Update history
+                history.push({ role: 'user', content: text });
+                history.push({ role: 'model', content: response });
+            })
+            .withFailureHandler(function (error) {
+                removeLoading(loadingId);
+                addMessage('エラーが発生しました: ' + error.message, 'model');
+            })
+            .chat(text, history);
+    }
+
+    function addMessage(text, role) {
+        const div = document.createElement('div');
+        div.className = `message ${role}`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'avatar';
+        avatar.innerHTML = `<span class="material-icons">${role === 'user' ? 'person' : 'smart_toy'}</span>`;
+
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        // Simple markdown-like parsing for bold text
+        bubble.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+
+        div.appendChild(avatar);
+        div.appendChild(bubble);
+
+        chatContainer.appendChild(div);
+        scrollToBottom();
+    }
+
+    function addLoading() {
+        const id = 'loading-' + Date.now();
+        const div = document.createElement('div');
+        div.className = 'message model';
+        div.id = id;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'avatar';
+        avatar.innerHTML = '<span class="material-icons">smart_toy</span>';
+
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.innerHTML = `
+    <div class="loading-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  `;
+
+        div.appendChild(avatar);
+        div.appendChild(bubble);
+        chatContainer.appendChild(div);
+        scrollToBottom();
+        return id;
+    }
+
+    function removeLoading(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+    }
+
+    function scrollToBottom() {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+</script>

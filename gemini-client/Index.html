@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Notion Second Brain AI</title>
+    <?!= include('Stylesheet'); ?>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="header-content">
+          <span class="material-icons">psychology</span>
+          <h1>Notion Second Brain</h1>
+        </div>
+      </header>
+      
+      <main id="chat-container">
+        <div class="message model">
+          <div class="avatar">
+            <span class="material-icons">smart_toy</span>
+          </div>
+          <div class="bubble">
+            こんにちは！Notionのノート管理をお手伝いします。<br>
+            「読書メモを追加して」や「最近のノートを教えて」と話しかけてください。
+          </div>
+        </div>
+      </main>
+      
+      <footer>
+        <div class="input-area">
+          <textarea id="user-input" placeholder="メッセージを入力..." rows="1"></textarea>
+          <button id="send-btn" disabled>
+            <span class="material-icons">send</span>
+          </button>
+        </div>
+      </footer>
+    </div>
+    
+    <?!= include('JavaScript'); ?>
+  </body>
+</html>
