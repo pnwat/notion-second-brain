@@ -13,7 +13,49 @@ function convertMarkdownToBlocks(markdown) {
     }
 
     try {
-        const blocks = markdownToBlocks(markdown);
+        let blocks = markdownToBlocks(markdown);
+
+        // Post-process: Convert Quote > Heading to Toggle Heading
+        // Markdown syntax "> # Heading" becomes a Quote block containing a Heading block.
+        // We want to convert this to a top-level Heading block with is_toggleable: true.
+        blocks = blocks.map(block => {
+
+            // Debug logging
+            if (block.type === 'quote') {
+                console.log('Processing Quote Block:');
+                console.log('  Has children:', !!block.quote.children);
+                if (block.quote.children) {
+                    console.log('  Children length:', block.quote.children.length);
+                    if (block.quote.children.length > 0) {
+                        console.log('  First child type:', block.quote.children[0].type);
+                    }
+                }
+            }
+
+            if (block.type === 'quote' && block.quote.children && block.quote.children.length > 0) {
+                const firstChild = block.quote.children[0];
+                if (['heading_1', 'heading_2', 'heading_3'].includes(firstChild.type)) {
+                    // Promote first child to top-level and make it toggleable
+                    const toggleHeading = {
+                        ...firstChild,
+                        [firstChild.type]: {
+                            ...firstChild[firstChild.type],
+                            is_toggleable: true
+                        }
+                    };
+
+                    // If there are other children in the quote, move them inside the toggle heading
+                    if (block.quote.children.length > 1) {
+                        const remainingChildren = block.quote.children.slice(1);
+                        toggleHeading[firstChild.type].children = remainingChildren;
+                    }
+
+                    return toggleHeading;
+                }
+            }
+            return block;
+        });
+
         logger.info(`Converted Markdown to ${blocks.length} Notion blocks`);
         return blocks;
     } catch (error) {
