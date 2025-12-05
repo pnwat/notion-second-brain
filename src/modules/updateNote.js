@@ -97,7 +97,21 @@ async function updateNote({ pageId, title, content, tags, category, replaceConte
 
                 // Normalize string for comparison (remove spaces)
                 const normalize = (str) => str.replace(/\s+/g, '').toLowerCase();
-                const targetSection = normalize(section);
+
+                // Handle aliases
+                let targetSection = normalize(section);
+                const aliases = {
+                    'clips': 'クリップ',
+                    'clip': 'クリップ',
+                    'thoughts': '感想',
+                    'thought': '感想',
+                    'impressions': '感想',
+                    'impression': '感想'
+                };
+                if (aliases[targetSection]) {
+                    logger.info(`Mapped section alias "${targetSection}" to "${aliases[targetSection]}"`);
+                    targetSection = normalize(aliases[targetSection]);
+                }
 
                 const sectionBlock = pageBlocks.results.find(block => {
                     const type = block.type;
